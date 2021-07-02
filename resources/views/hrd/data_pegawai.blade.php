@@ -40,7 +40,7 @@
                         @foreach ($data_pegawai as $peg)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td> <a href="#">{{$peg->nama_depan}} {{$peg->nama_belakang}}</a></td>
+                                <td> <a href="{{route('data_pegawai.edit',$peg->id_pegawai)}}">{{$peg->nama_depan}} {{$peg->nama_belakang}}</a></td>
                                 <td>{{$peg->jabatan}}</td>
                                 <td>{{$peg->status}}</td>
                                 <td>{{$peg->agama}}</td>

@@ -44,6 +44,55 @@ class HRDController extends Controller
         $user_delete->delete();
         $pegawai_delete = pegawai::findOrfail($id_pegawai);
         $pegawai_delete->delete();
-        return redirect()->back()->with(['success' => 'Kategori: ' . $pegawai_delete->nama_depan.' '.$pegawai_delete->nama_belakang . ' Telah Dihapus']);
+        return redirect()->back()->with(['success' => 'Data: ' . $pegawai_delete->nama_depan.' '.$pegawai_delete->nama_belakang . ' Telah Dihapus']);
+    }
+
+    public function edit($show_pegawai){
+        $show = pegawai::findOrFail($show_pegawai);
+        return view('hrd.show_pegawai',compact('show'));
+    }
+
+    public function update(Request $request,$id_pegawai){
+        $user_nama = DB::table('pegawais')->where('id_pegawai',$id_pegawai)->select('nama_depan')->first();
+        $get_nama = $user_nama->nama_depan;
+        try {
+            $nama_depan_update = user::where('name','=',$get_nama)->first();
+            $pegawai_edit = pegawai::findOrFail($id_pegawai);
+            $nama_depan = !empty($request->nama_depan) ? $request->nama_depan:$pegawai_edit->nama_depan;
+            $nama_belakang = !empty($request->nama_belakang) ? $request->nama_belakang:$pegawai_edit->nama_belakang;
+            $jabatan = !empty($request->jabatan) ? $request->jabatan:$pegawai_edit->jabatan;
+            $tanggungan = !empty($request->tanggungan) ? $request->tanggungan:$pegawai_edit->tanggungan;
+            $email = !empty($request->email) ? $request->email:$pegawai_edit->email;
+            $telepon = !empty($request->telepon) ? $request->telepon:$pegawai_edit->telepon;
+            $status = !empty($request->status) ? $request->status:$pegawai_edit->status;
+            $jenis_kelamin = !empty($request->jenis_kelamin) ? $request->jenis_kelamin:$pegawai_edit->jenis_kelamin;
+            $agama = !empty($request->agama) ? $request->agama:$pegawai_edit->agama;
+            $alamat = !empty($request->alamat) ? $request->alamat:$pegawai_edit->alamat;
+            $tempat_lahir = !empty($request->tempat_lahir) ? $request->tempat_lahir:$pegawai_edit->tempat_lahir;
+            $tanggal_lahir = !empty($request->tanggal_lahir) ? $request->tanggal_lahir:$pegawai_edit->tanggal_lahir;
+            $pend_terakhir = !empty($request->pend_terakhir) ? $request->pend_terakhir:$pegawai_edit->pend_terakhir;
+            $pend_ditempuh = !empty($request->pend_ditempuh) ? $request->pend_ditempuh:$pegawai_edit->pend_ditempuh;
+            $nama_depan_user = !empty($request->nama_depan) ? $request->nama_depan:$nama_depan_update->name;
+            $pegawai_edit->update([
+                                    'nama_depan' => $nama_depan,
+                                    'nama_belakang' => $nama_belakang,
+                                    'jabatan' => $jabatan,
+                                    'tanggungan' => $tanggungan,
+                                    'email' => $email,
+                                    'telepon' => $telepon,
+                                    'status' => $status,
+                                    'jenis_kelamin' => $jenis_kelamin,
+                                    'agama' => $agama,
+                                    'alamat' => $alamat,
+                                    'tempat_lahir' => $tempat_lahir,
+                                    'tanggal_lahir' => $tanggal_lahir,
+                                    'pend_terakhir' => $pend_terakhir,
+                                    'pend_ditempuh' => $pend_ditempuh
+                                    ]);
+            $nama_depan_update->update(['name' => $nama_depan_user]);
+            return redirect()->back()->with(['success' => 'Data: ' . $pegawai_edit->nama_depan.' '.$pegawai_edit->nama_belakang . ' Telah Diubah']);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('warning','uppsss...!!! terjadi kesalahan');
+        }
     }
 }

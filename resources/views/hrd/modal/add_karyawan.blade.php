@@ -90,6 +90,7 @@
                                     <label for="tanggungan">Tanggungan</label>
                                     <input type="text" class="form-control" name="tanggungan"
                                         placeholder="jumlah tanggungan" required>
+                                        <sup style="color: red">*ketikan 0 bila tidak memiliki tanggungan</sup>
                                 </div>
                             </div>
                         </div>
