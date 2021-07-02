@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
         /**end users */
     });
     Route::group(['middleware' => ['role:HRD']], function(){
-        Route::resource('/HRD/data_pegawai', 'HRDController');
+        Route::resource('/HRD/data_pegawai', 'HRDController')->except(['destroy']);
     });
     Route::group(['middleware' => ['role:karyawan']], function(){
         Route::resource('/karyawan/cuti', 'KaryawanController');

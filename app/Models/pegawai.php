@@ -9,4 +9,5 @@ class pegawai extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $primaryKey = 'id_pegawai';
 }
