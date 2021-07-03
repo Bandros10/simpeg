@@ -44,7 +44,7 @@ class HRDController extends Controller
         $user_delete->delete();
         $pegawai_delete = pegawai::findOrfail($id_pegawai);
         $pegawai_delete->delete();
-        return redirect()->back()->with(['success' => 'Data: ' . $pegawai_delete->nama_depan.' '.$pegawai_delete->nama_belakang . ' Telah Dihapus']);
+        return redirect()->back()->with(['sukses' => 'Data: ' . $pegawai_delete->nama_depan.' '.$pegawai_delete->nama_belakang . ' Telah Dihapus']);
     }
 
     public function edit($show_pegawai){
@@ -56,8 +56,12 @@ class HRDController extends Controller
         $user_nama = DB::table('pegawais')->where('id_pegawai',$id_pegawai)->select('nama_depan')->first();
         $get_nama = $user_nama->nama_depan;
         try {
-            $nama_depan_update = user::where('name','=',$get_nama)->first();
             $pegawai_edit = pegawai::findOrFail($id_pegawai);
+            $user_update = user::where('name','=',$get_nama)->first();
+            $pass = bcrypt($request->nama_depan.substr($request->telepon,9,13));
+            /**
+             * pegawai update
+             */
             $nama_depan = !empty($request->nama_depan) ? $request->nama_depan:$pegawai_edit->nama_depan;
             $nama_belakang = !empty($request->nama_belakang) ? $request->nama_belakang:$pegawai_edit->nama_belakang;
             $jabatan = !empty($request->jabatan) ? $request->jabatan:$pegawai_edit->jabatan;
@@ -72,7 +76,14 @@ class HRDController extends Controller
             $tanggal_lahir = !empty($request->tanggal_lahir) ? $request->tanggal_lahir:$pegawai_edit->tanggal_lahir;
             $pend_terakhir = !empty($request->pend_terakhir) ? $request->pend_terakhir:$pegawai_edit->pend_terakhir;
             $pend_ditempuh = !empty($request->pend_ditempuh) ? $request->pend_ditempuh:$pegawai_edit->pend_ditempuh;
-            $nama_depan_user = !empty($request->nama_depan) ? $request->nama_depan:$nama_depan_update->name;
+
+            /**
+             * user update
+             */
+            $nama_depan_user = !empty($request->nama_depan) ? $request->nama_depan:$user_update->name;
+            $pass = bcrypt($nama_depan.substr($telepon,9,13));
+            $password_update = !empty($user_update->password) ? $pass:$user_update->password;
+
             $pegawai_edit->update([
                                     'nama_depan' => $nama_depan,
                                     'nama_belakang' => $nama_belakang,
@@ -89,8 +100,11 @@ class HRDController extends Controller
                                     'pend_terakhir' => $pend_terakhir,
                                     'pend_ditempuh' => $pend_ditempuh
                                     ]);
-            $nama_depan_update->update(['name' => $nama_depan_user]);
-            return redirect()->back()->with(['success' => 'Data: ' . $pegawai_edit->nama_depan.' '.$pegawai_edit->nama_belakang . ' Telah Diubah']);
+            $user_update->update([
+                                        'name' => $nama_depan_user,
+                                        'email' => $email,
+                                        'password' => $password_update]);
+            return redirect()->back()->with(['sukses' => 'Data: ' . $pegawai_edit->nama_depan.' '.$pegawai_edit->nama_belakang . ' Telah Diubah']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('warning','uppsss...!!! terjadi kesalahan');
         }
