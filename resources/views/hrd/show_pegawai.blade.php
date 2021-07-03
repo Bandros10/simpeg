@@ -70,7 +70,7 @@
 
                                 <p class="text-muted">
                                     <span class="tag tag-danger">{{$show->agama}} | </span>
-                                    <span class="tag tag-success">{{$show->tempat_lahir}}, {{$show->tanggal_lahir}} | </span>
+                                    <span class="tag tag-success">{{$show->tempat_lahir}}, {{Carbon\Carbon::parse($show->tanggal_lahir)->translatedFormat('d F Y')}} | </span>
                                     <span class="tag tag-info">{{$show->status}}</span>
                                 </p>
 
@@ -413,7 +413,7 @@
                                                     <input type="text" class="form-control" name="tempat_lahir" placeholder="{{$show->tempat_lahir}}">
                                                 </div>
                                                 <div class="col-sm-5">
-                                                    <input placeholder="{{Carbon\Carbon::parse($show->tanggal_lahir)->format('d F Y')}}" class="form-control" type="text" onfocus="(this.type='date')">
+                                                    <input placeholder="{{Carbon\Carbon::parse($show->tanggal_lahir)->translatedFormat('d F Y')}}" class="form-control" type="text" onfocus="(this.type='date')">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
