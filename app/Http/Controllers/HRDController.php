@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cuti;
 use App\Models\User;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
@@ -49,7 +50,9 @@ class HRDController extends Controller
 
     public function edit($show_pegawai){
         $show = pegawai::findOrFail($show_pegawai);
-        return view('hrd.show_pegawai',compact('show'));
+        $nama = $show->nama_depan.' '.$show->nama_belakang;
+        $cuti = cuti::where('id_pegawai','=',$show->id_pegawai)->where('nama_pengaju','=',$nama)->select('jumlah_cuti')->get()->count();
+        return view('hrd.show_pegawai',compact('show','cuti'));
     }
 
     public function update(Request $request,$id_pegawai){

@@ -14,7 +14,7 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             @role('super admin')
-            <li class="nav-item menu-open">
+            <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
@@ -49,8 +49,8 @@
             </li>
             @endrole
             @role('HRD')
-            <li class="nav-item">
-                <a href="#" class="nav-link">
+            <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         HRD MENU
@@ -73,14 +73,22 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('aproval.index')}}" class="nav-link">
+                            <i class="fas fa-business-time nav-icon"></i>
+                            <p>Data Pengajuan Cuti</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
             @endrole
             @role('karyawan')
             <li class="nav-item menu-open">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
-                        MENU
+                        MENU KARYAWAN
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>

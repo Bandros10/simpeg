@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::group(['middleware' => ['role:HRD']], function(){
         Route::resource('/HRD/data_pegawai', 'HRDController');
+        Route::get('/HRD/Aproval_cuti', 'AprovController@index')->name('aproval.index');
+        Route::get('/HRD/Aproval_cuti/{id}', 'AprovController@data_aproval_cuti')->name('aproval.show');
+        Route::post('/HRD/Aproval_cuti/{id_cuti}/approv', 'AprovController@update_status_approv')->name('aproval.update');
     });
     Route::group(['middleware' => ['role:karyawan']], function(){
         Route::resource('/karyawan/cuti', 'KaryawanController');

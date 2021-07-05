@@ -18,6 +18,33 @@
     </div>
 </div>
 <hr>
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="fas fa-bullhorn"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Permintaan Cuti</span>
+            <span class="info-box-number">{{$permintaan}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Approval</span>
+            <span class="info-box-number">{{$approval}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+</div>
 
 @endsection
 @push('js')

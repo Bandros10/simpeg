@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Blade;
 use Carbon\Carbon;
+use App\Models\cuti;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::share('notif', cuti::where('status',false)->count());
         Blade::component('components.card', 'card');
         Blade::component('components.alert', 'alert');
         config(['app.locale' => 'id']);

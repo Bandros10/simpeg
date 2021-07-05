@@ -26,7 +26,7 @@
 
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b>Jumlah Cuti</b> <a class="float-right">1,322</a>
+                                        <b>Jumlah Cuti</b> <a class="float-right">{{$cuti}}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Jumlah Tanggungan</b> <a class="float-right">{{$show->tanggungan}}</a>

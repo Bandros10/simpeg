@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cuti;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $permintaan = cuti::all()->where('status','=',false)->count();
+        $approval = cuti::all()->where('status','=',true)->count();
+        // dd($data_permintaan);
+        return view('home',compact('permintaan','approval'));
     }
 }
