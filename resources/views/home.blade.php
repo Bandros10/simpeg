@@ -11,7 +11,7 @@
 @section('content')
 <div class="row">
     <div class="col-8">
-        <h5><b>Sistem Informasi Kepegawaian</b> | <span>PT.Suwanda Karya Mandiri | check git desktop</span></h5>
+        <h5><b>Sistem Informasi Kepegawaian</b> | <span>PT.Suwanda Karya Mandiri</span></h5>
     </div>
     <div class="col-4 text-right">
         <h5 id="clock" style="font-weight: bold"></h5>

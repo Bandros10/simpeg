@@ -42,6 +42,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/HRD/Aproval_cuti/{id}', 'AprovController@data_aproval_cuti')->name('aproval.show');
         Route::post('/HRD/Aproval_cuti/{id_cuti}/approv', 'AprovController@update_status_approv')->name('aproval.update');
     });
+    Route::group(['middleware' => ['role:kepala devisi']], function(){
+        Route::get('/kepala_devisi/Aproval_cuti', 'KepalaController@index')->name('aproval.kepala.index');
+        Route::get('/kepala_devisi/Aproval_cuti/{id}', 'KepalaController@data_cuti_kepala')->name('kepala.show');
+        Route::post('kepala_devisi/update/{id}','KepalaController@update')->name('kepala.update');
+        Route::get('kepala_devisi/tolak/{id}','KepalaController@tolak')->name('kepala.tolak');
+    });
     Route::group(['middleware' => ['role:karyawan']], function(){
         Route::resource('/karyawan/cuti', 'KaryawanController');
     });

@@ -82,7 +82,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="telepon">Telepon</label>
-                                    <input type="text" class="form-control" name="telepon" placeholder="Nomer telepon" required>
+                                    <input type="text" class="form-control" name="telepon" maxlength="12" placeholder="Nomer telepon" required>
                                 </div>
                             </div>
                             <div class="col-4">

@@ -22,7 +22,9 @@ class CreateCutisTable extends Migration
             $table->string('jumlah_cuti');
             $table->string('tgl_cuti');
             $table->text('keterangan');
-            $table->boolean('status')->default(false);
+            $table->tinyInteger('status')->default(0);
+            $table->boolean('status_kepala')->default(false);
+            $table->boolean('status_hrd')->default(false);
             $table->timestamps();
         });
     }

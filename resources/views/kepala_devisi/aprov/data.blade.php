@@ -3,18 +3,6 @@
 @section('title')
 <title>Data cuti</title>
 @endsection
-@section('css')
-    <style>
-        .hide{
-            display: none;
-        }
-
-        .hover:hover + .hide {
-            display: block;
-            color: red;
-        }
-    </style>
-@endsection
 
 @section('content')
 <div class="row">
@@ -50,21 +38,12 @@
                                 tanggal <b>{{substr($aktiviti->tgl_cuti,12,20)}}</b>
                                 Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
                             </p>
-                            @if ($aktiviti->status_kepala != false)
-                                <form class="form-horizontal" action="{{route('aproval.update',$aktiviti->id_cuti)}}"
-                                    method="POST">
-                                    {{ csrf_field() }}
-                                    @if ($aktiviti->status != true)
-                                    <button type="submit" class="btn btn-warning btn-block">APPROVAL</button>
-                                    @else
-                                    <button class="btn btn-block btn-success" disabled>SUDAH DI APPROV</button>
-                                    @endif
-                                </form>
-                            @else
-                                <button type="submit" class="btn btn-warning btn-block hover" disabled>APPROVAL</button>
-                                <span class="hide">Belum aprov kepala devisi</span>
-                            @endif
                         </div>
+                        <form action="{{route('kepala.update',$aktiviti->id_cuti)}}" method="POST">
+                            {{ csrf_field() }}
+                            <button class="btn btn-warning">APPROVAL</button>
+                            <a href="{{Route('kepala.tolak',$aktiviti->id_cuti)}}" class="btn btn-danger">TOLAK</a>
+                        </form>
                         @endif
                         @endforeach
                         <!-- /.post -->
