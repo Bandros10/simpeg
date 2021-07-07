@@ -116,6 +116,7 @@
                                 Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
                             </p>
                             <button class="btn btn-block btn-success" disabled>SUDAH DI APPROV</button>
+                            <a href="{{route('cetak.form_izin_cuti',$aktiviti->id_cuti)}}" class="btn btn-info btn-block"><i class="fas fa-file"></i> CETAK FORM CUTI</a>
                         </div>
                         @endif
                         @endforeach

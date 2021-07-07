@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/HRD/Aproval_cuti', 'AprovController@index')->name('aproval.index');
         Route::get('/HRD/Aproval_cuti/{id}', 'AprovController@data_aproval_cuti')->name('aproval.show');
         Route::post('/HRD/Aproval_cuti/{id_cuti}/approv', 'AprovController@update_status_approv')->name('aproval.update');
+        Route::get('/catak/form_cuti/{id_cuti}','AprovController@cetak_form')->name('cetak.form_izin_cuti');
     });
     Route::group(['middleware' => ['role:kepala devisi marketing|kepala devisi administrasi']], function(){
         Route::get('/kepala_devisi/Aproval_cuti/marketing', 'KepalaController@index_marketing')->name('aproval.kepala.index.marketing');
