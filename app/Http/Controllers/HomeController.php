@@ -25,9 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $permintaan = cuti::all()->where('status','=',false)->count();
-        $approval = cuti::all()->where('status','=',true)->count();
+        $permintaan = cuti::all()->where('status','=',0)->count();
+        $pending = cuti::all()->where('status','=',1)->count();
+        $approval = cuti::all()->where('status','=',2)->count();
         // dd($data_permintaan);
-        return view('home',compact('permintaan','approval'));
+        return view('home',compact('permintaan','approval','pending'));
     }
 }

@@ -2,6 +2,7 @@
 @section('title')
 <title>Aprov cuti karyawan</title>
 @endsection
+
 @section('content')
 <div class="row">
     <div class="col">
@@ -19,20 +20,22 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Pengaju</th>
+                            <th>Devisi Pengaju</th>
                             <th>Jabatan Pengaju</th>
                             <th>Telepon</th>
                             <th>Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data_pegawai_kepala as $d)
+                        @foreach ($data_pegawai_kepala_administrasi as $administrasi)
                         <tr>
                             <td>{{$no++}}</td>
-                            <td>{{$d->nama_depan}} {{$d->nama_belakang}}</td>
-                            <td>{{$d->jabatan}}</td>
-                            <td>{{$d->telepon}}</td>
+                            <td>{{$administrasi->nama_depan}} {{$administrasi->nama_belakang}}</td>
+                            <td>{{$administrasi->devisi}}</td>
+                            <td>{{$administrasi->jabatan}}</td>
+                            <td>{{$administrasi->telepon}}</td>
                             <td>
-                                <a href="{{route('kepala.show',$d->id_pegawai)}}"
+                                <a href="{{route('kepala.show',$administrasi->id_pegawai)}}"
                                     class="btn btn-info btn-sm"><i class="fas fa-file-alt"></i> Data cuti</a>
                             </td>
                         </tr>

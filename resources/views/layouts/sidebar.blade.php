@@ -83,7 +83,25 @@
                 </ul>
             </li>
             @endrole
-            @role('kepala devisi')
+            @role('kepala devisi marketing')
+            <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
+                        KEPALA DEVISI MARKETING
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('aproval.kepala.index.marketing')}}" class="nav-link">
+                            <i class="fas fa-business-time nav-icon"></i>
+                            <p>Data Pengajuan Cuti</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @elserole('kepala devisi administrasi')
             <li class="nav-item menu-open">
                 <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-users"></i>
@@ -94,7 +112,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('aproval.kepala.index')}}" class="nav-link">
+                        <a href="{{route('aproval.kepala.index.administrasi')}}" class="nav-link">
                             <i class="fas fa-business-time nav-icon"></i>
                             <p>Data Pengajuan Cuti</p>
                         </a>

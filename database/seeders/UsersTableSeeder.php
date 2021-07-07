@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('admin719'),
         ]);
         /**role */
         Role::create([
@@ -31,11 +31,39 @@ class UsersTableSeeder extends Seeder
             'guard_name' => 'web'
         ]);
         Role::create([
-            'name' => 'karyawan',
+            'name' => 'kepala devisi marketing',
             'guard_name' => 'web'
         ]);
         Role::create([
-            'name' => 'kepala devisi',
+            'name' => 'kepala devisi administrasi',
+            'guard_name' => 'web'
+        ]);
+        Role::create([
+            'name' => 'kepala devisi 3',
+            'guard_name' => 'web'
+        ]);
+        Role::create([
+            'name' => 'kepala devisi 4',
+            'guard_name' => 'web'
+        ]);
+        Role::create([
+            'name' => 'kepala devisi 5',
+            'guard_name' => 'web'
+        ]);
+        Role::create([
+            'name' => 'kepala devisi 6',
+            'guard_name' => 'web'
+        ]);
+        Role::create([
+            'name' => 'kepala devisi 7',
+            'guard_name' => 'web'
+        ]);
+        Role::create([
+            'name' => 'kepala devisi 8',
+            'guard_name' => 'web'
+        ]);
+        Role::create([
+            'name' => 'karyawan',
             'guard_name' => 'web'
         ]);
 
@@ -62,6 +90,48 @@ class UsersTableSeeder extends Seeder
             ['role_id' => 4,
              'model_type' => 'App\Models\User',
              'model_id' => 4
+            ]
+        ]);
+        DB::table('model_has_roles')->insert([
+            ['role_id' => 5,
+             'model_type' => 'App\Models\User',
+             'model_id' => 5
+            ]
+        ]);
+        DB::table('model_has_roles')->insert([
+            ['role_id' => 6,
+             'model_type' => 'App\Models\User',
+             'model_id' => 6
+            ]
+        ]);
+        DB::table('model_has_roles')->insert([
+            ['role_id' => 7,
+             'model_type' => 'App\Models\User',
+             'model_id' => 7
+            ]
+        ]);
+        DB::table('model_has_roles')->insert([
+            ['role_id' => 8,
+             'model_type' => 'App\Models\User',
+             'model_id' => 8
+            ]
+        ]);
+        DB::table('model_has_roles')->insert([
+            ['role_id' => 9,
+             'model_type' => 'App\Models\User',
+             'model_id' => 9
+            ]
+        ]);
+        DB::table('model_has_roles')->insert([
+            ['role_id' => 10,
+             'model_type' => 'App\Models\User',
+             'model_id' => 10
+            ]
+        ]);
+        DB::table('model_has_roles')->insert([
+            ['role_id' => 11,
+             'model_type' => 'App\Models\User',
+             'model_id' => 11
             ]
         ]);
     }

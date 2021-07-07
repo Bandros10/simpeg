@@ -21,7 +21,8 @@ class AprovController extends Controller
     }
 
     public function update_status_approv($id_cuti){
-        DB::table('cutis')->where('id_cuti',$id_cuti)->update(['status'=>true]);
+        DB::table('cutis')->where('id_cuti',$id_cuti)->update(['status'=>2]);
+        DB::table('cutis')->where('id_cuti',$id_cuti)->update(['status_hrd'=>true]);
         return redirect()->back()->with('sukses','Pengajuan Cuti Telah Di Approval');
     }
 }

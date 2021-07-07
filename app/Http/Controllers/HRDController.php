@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Crypt;
 
 class HRDController extends Controller
 {

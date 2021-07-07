@@ -13,21 +13,28 @@
                     {{ csrf_field() }}
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="form-group">
                                     <label for="nama_depan">Nama Depan</label>
                                     <input type="text" class="form-control" name="nama_depan"
                                         placeholder="Masukan Nama Depan" required>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="form-group">
                                     <label for="nama">Nama Belakang</label>
                                     <input type="text" class="form-control" name="nama_belakang"
                                         placeholder="Masukan Nama Belakang" required>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="nama">Devisi</label>
+                                    <input type="text" class="form-control" name="devisi"
+                                        placeholder="masukan devisi" required>
+                                </div>
+                            </div>
+                            <div class="col-3">
                                 <div class="form-group">
                                     <label for="jabatan">Jabatan</label>
                                     <input type="text" class="form-control" name="jabatan"

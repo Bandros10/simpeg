@@ -3,18 +3,6 @@
 @section('title')
 <title>Data cuti</title>
 @endsection
-@section('css')
-    <style>
-        .hide{
-            display: none;
-        }
-
-        .hover:hover + .hide {
-            display: block;
-            color: red;
-        }
-    </style>
-@endsection
 
 @section('content')
 <div class="row">
@@ -30,94 +18,55 @@
                     <div class="active tab-pane" id="activity">
                         <!-- Post -->
                         @foreach ($data_cuti as $aktiviti)
-                        @if ($aktiviti->status == 0)
-                        <div class="post clearfix">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="{{asset('dist/img/user7-128x128.jpg')}}"
-                                    alt="User Image">
-                                <span class="username">
-                                    <a href="#">{{$aktiviti->nama_pengaju}}</a>
-                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                                </span>
-                                <span class="description">{{$aktiviti->created_at->translatedFormat(' d F Y')}} -
-                                    {{$aktiviti->created_at->diffForHumans()}}</span>
-                            </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Pengajuan Cuti Atas Nama <b>{{strtoupper($aktiviti->nama_pengaju)}}</b> Jabatan Sebagai
-                                <b>{{strtoupper($aktiviti->jabatan_pengaju)}}</b>
-                                Pengajuan Cuti Di Ajukan Pada Tanggal <b>{{substr($aktiviti->tgl_cuti,0,10)}}</b> Sampai
-                                tanggal <b>{{substr($aktiviti->tgl_cuti,12,20)}}</b>
-                                Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
-                            </p>
-                            @if ($aktiviti->status_kepala != false)
-                                <form class="form-horizontal" action="{{route('aproval.update',$aktiviti->id_cuti)}}"
-                                    method="POST">
+                            @if ($aktiviti->status != true)
+                                <div class="post clearfix">
+                                    <div class="user-block">
+                                        <img class="img-circle img-bordered-sm" src="{{asset('dist/img/user7-128x128.jpg')}}"
+                                            alt="User Image">
+                                        <span class="username">
+                                            <a href="#">{{$aktiviti->nama_pengaju}}</a>
+                                            <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                                        </span>
+                                        <span class="description">{{$aktiviti->created_at->translatedFormat(' d F Y')}} -
+                                            {{$aktiviti->created_at->diffForHumans()}}</span>
+                                    </div>
+                                    <!-- /.user-block -->
+                                    <p>
+                                        Pengajuan Cuti Atas Nama <b>{{strtoupper($aktiviti->nama_pengaju)}}</b> Jabatan Sebagai
+                                        <b>{{strtoupper($aktiviti->jabatan_pengaju)}}</b>
+                                        Pengajuan Cuti Di Ajukan Pada Tanggal <b>{{substr($aktiviti->tgl_cuti,0,10)}}</b> Sampai
+                                        tanggal <b>{{substr($aktiviti->tgl_cuti,12,20)}}</b>
+                                        Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
+                                    </p>
+                                </div>
+                                <form action="{{route('kepala.update',$aktiviti->id_cuti)}}" method="POST">
                                     {{ csrf_field() }}
-                                    @if ($aktiviti->status != true)
-                                    <button type="submit" class="btn btn-warning btn-block">APPROVAL</button>
-                                    @else
-                                    <button class="btn btn-block btn-success" disabled>SUDAH DI APPROV</button>
-                                    @endif
+                                    <button class="btn btn-warning">APPROVAL</button>
+                                    <a href="{{Route('kepala.tolak.marketing',$aktiviti->id_cuti)}}" class="btn btn-danger">TOLAK</a>
                                 </form>
-                            @else
-                                <button type="submit" class="btn btn-warning btn-block hover" disabled>APPROVAL</button>
-                                <span class="hide">Belum aprov kepala devisi</span>
+                                @elseif ($aktiviti->status == '3')
+                                <div class="post clearfix">
+                                    <div class="user-block">
+                                        <img class="img-circle img-bordered-sm" src="{{asset('dist/img/user7-128x128.jpg')}}"
+                                            alt="User Image">
+                                        <span class="username">
+                                            <a href="#">{{$aktiviti->nama_pengaju}}</a>
+                                            <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                                        </span>
+                                        <span class="description">{{$aktiviti->created_at->translatedFormat(' d F Y')}} -
+                                            {{$aktiviti->created_at->diffForHumans()}}</span>
+                                    </div>
+                                    <!-- /.user-block -->
+                                    <p>
+                                        Pengajuan Cuti Atas Nama <b>{{strtoupper($aktiviti->nama_pengaju)}}</b> Jabatan Sebagai
+                                        <b>{{strtoupper($aktiviti->jabatan_pengaju)}}</b>
+                                        Pengajuan Cuti Di Ajukan Pada Tanggal <b>{{substr($aktiviti->tgl_cuti,0,10)}}</b> Sampai
+                                        tanggal <b>{{substr($aktiviti->tgl_cuti,12,20)}}</b>
+                                        Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
+                                    </p>
+                                </div>
+                                <button class="btn btn-warning btn-block" disabled>PENGAJUAN CUTI ANDA TIDAK DI APPROV OLEH KEPALA DEVISI</button>
                             @endif
-                        </div>
-                        @elseif ($aktiviti->status == 1 && $aktiviti->status_kepala == 1)
-                        <div class="post clearfix">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="{{asset('dist/img/user7-128x128.jpg')}}"
-                                    alt="User Image">
-                                <span class="username">
-                                    <a href="#">{{$aktiviti->nama_pengaju}}</a>
-                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                                </span>
-                                <span class="description">{{$aktiviti->created_at->translatedFormat(' d F Y')}} -
-                                    {{$aktiviti->created_at->diffForHumans()}}</span>
-                            </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Pengajuan Cuti Atas Nama <b>{{strtoupper($aktiviti->nama_pengaju)}}</b> Jabatan Sebagai
-                                <b>{{strtoupper($aktiviti->jabatan_pengaju)}}</b>
-                                Pengajuan Cuti Di Ajukan Pada Tanggal <b>{{substr($aktiviti->tgl_cuti,0,10)}}</b> Sampai
-                                tanggal <b>{{substr($aktiviti->tgl_cuti,12,20)}}</b>
-                                Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
-                            </p>
-                            <form class="form-horizontal" action="{{route('aproval.update',$aktiviti->id_cuti)}}"
-                                method="POST">
-                                {{ csrf_field() }}
-                                @if ($aktiviti->status == 1)
-                                <button type="submit" class="btn btn-warning btn-block">APPROVAL</button>
-                                @else
-                                <button class="btn btn-block btn-success" disabled>SUDAH DI APPROV</button>
-                                @endif
-                            </form>
-                        </div>
-                        @elseif ($aktiviti->status == 2)
-                        <div class="post clearfix">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="{{asset('dist/img/user7-128x128.jpg')}}"
-                                    alt="User Image">
-                                <span class="username">
-                                    <a href="#">{{$aktiviti->nama_pengaju}}</a>
-                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                                </span>
-                                <span class="description">{{$aktiviti->created_at->translatedFormat(' d F Y')}} -
-                                    {{$aktiviti->created_at->diffForHumans()}}</span>
-                            </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Pengajuan Cuti Atas Nama <b>{{strtoupper($aktiviti->nama_pengaju)}}</b> Jabatan Sebagai
-                                <b>{{strtoupper($aktiviti->jabatan_pengaju)}}</b>
-                                Pengajuan Cuti Di Ajukan Pada Tanggal <b>{{substr($aktiviti->tgl_cuti,0,10)}}</b> Sampai
-                                tanggal <b>{{substr($aktiviti->tgl_cuti,12,20)}}</b>
-                                Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
-                            </p>
-                            <button class="btn btn-block btn-success" disabled>SUDAH DI APPROV</button>
-                        </div>
-                        @endif
                         @endforeach
                         <!-- /.post -->
                     </div>

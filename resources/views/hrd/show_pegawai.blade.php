@@ -360,9 +360,12 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="inputName2" class="col-sm-2 col-form-label">Tanggungan:</label>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-1">
                                                     <input type="text" name="tanggungan" class="form-control" placeholder="{{$show->tanggungan}}">
-                                                        <sup style="color: red">*ketikan 0 bila tidak memilika tanggungan</sup>
+                                                </div>
+                                                <label for="inputName2" class="col-sm-1 col-form-label">Devisi:</label>
+                                                <div class="col-sm-2">
+                                                    <input type="text" name="devisi" class="form-control" placeholder="{{$show->devisi}}">
                                                 </div>
                                                 <label for="inputName2" class="col-sm-1 col-form-label">Jabatan:</label>
                                                 <div class="col-sm-5">

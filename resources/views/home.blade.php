@@ -34,6 +34,19 @@
       <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="fas fa-archive"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Pending</span>
+            <span class="info-box-number">{{$pending}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
           <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
 
           <div class="info-box-content">

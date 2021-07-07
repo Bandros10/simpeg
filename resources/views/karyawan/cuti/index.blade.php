@@ -18,14 +18,28 @@
                 <input type="text" name="id_pegawai" hidden value="{{$data_pegawai->id_pegawai}}">
                 <input type="text" name="jumlah_cuti" hidden value="{{1}}">
                 <div class="card-body">
-                    <div class="form-group">
-                        <label>Nama Pengaju</label>
-                        <input type="text" name="nama_pengaju" class="form-control"
-                            value="{{$data_pegawai->nama_depan}} {{$data_pegawai->nama_belakang}}" readonly>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Nama Pengaju</label>
+                                <input type="text" name="nama_pengaju" class="form-control"
+                                    value="{{$data_pegawai->nama_depan}} {{$data_pegawai->nama_belakang}}" readonly>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Jabatan Pengaju</label>
-                        <input type="text" name="jabatan_pengaju" class="form-control" value="{{$data_pegawai->jabatan}}" readonly>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Jabatan Pengaju</label>
+                                <input type="text" name="jabatan_pengaju" class="form-control" value="{{$data_pegawai->jabatan}}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Devisi</label>
+                                <input type="text" name="devisi" class="form-control" value="{{$data_pegawai->devisi}}" readonly>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Nomer Telepon Pengaju</label>

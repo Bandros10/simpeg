@@ -17,6 +17,7 @@ class CreateCutisTable extends Migration
             $table->increments('id_cuti');
             $table->integer('id_pegawai');
             $table->string('nama_pengaju');
+            $table->string('devisi');
             $table->string('jabatan_pengaju');
             $table->string('telepon');
             $table->string('jumlah_cuti');
