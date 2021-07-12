@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View::share('notif', cuti::where('status',false)->count());
+        View::share('notif', cuti::where('status',false)->count());
         Blade::component('components.card', 'card');
         Blade::component('components.alert', 'alert');
         config(['app.locale' => 'id']);

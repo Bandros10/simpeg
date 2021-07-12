@@ -4,16 +4,17 @@
 <title>Data cuti</title>
 @endsection
 @section('css')
-    <style>
-        .hide{
-            display: none;
-        }
+<style>
+    .hide {
+        display: none;
+    }
 
-        .hover:hover + .hide {
-            display: block;
-            color: red;
-        }
-    </style>
+    .hover:hover+.hide {
+        display: block;
+        color: red;
+    }
+
+</style>
 @endsection
 
 @section('content')
@@ -51,18 +52,18 @@
                                 Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
                             </p>
                             @if ($aktiviti->status_kepala != false)
-                                <form class="form-horizontal" action="{{route('aproval.update',$aktiviti->id_cuti)}}"
-                                    method="POST">
-                                    {{ csrf_field() }}
-                                    @if ($aktiviti->status != true)
-                                    <button type="submit" class="btn btn-warning btn-block">APPROVAL</button>
-                                    @else
-                                    <button class="btn btn-block btn-success" disabled>SUDAH DI APPROV</button>
-                                    @endif
-                                </form>
+                            <form class="form-horizontal" action="{{route('aproval.update',$aktiviti->id_cuti)}}"
+                                method="POST">
+                                {{ csrf_field() }}
+                                @if ($aktiviti->status != true)
+                                <button type="submit" class="btn btn-warning btn-block">APPROVAL</button>
+                                @else
+                                <button class="btn btn-block btn-success" disabled>SUDAH DI APPROV</button>
+                                @endif
+                            </form>
                             @else
-                                <button type="submit" class="btn btn-warning btn-block hover" disabled>APPROVAL</button>
-                                <span class="hide">Belum aprov kepala devisi</span>
+                            <button type="submit" class="btn btn-warning btn-block hover" disabled>APPROVAL</button>
+                            <span class="hide">Belum aprov kepala devisi</span>
                             @endif
                         </div>
                         @elseif ($aktiviti->status == 1 && $aktiviti->status_kepala == 1)
@@ -116,8 +117,32 @@
                                 Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
                             </p>
                             <button class="btn btn-block btn-success" disabled>SUDAH DI APPROV</button>
-                            <a href="{{route('cetak.form_izin_cuti',$aktiviti->id_cuti)}}" class="btn btn-info btn-block"><i class="fas fa-file"></i> CETAK FORM CUTI</a>
+                            <a href="{{route('cetak.form_izin_cuti',$aktiviti->id_cuti)}}"
+                                class="btn btn-info btn-block"><i class="fas fa-file"></i> CETAK FORM CUTI</a>
                         </div>
+                        @elseif ($aktiviti->status == '3')
+                        <div class="post clearfix">
+                            <div class="user-block">
+                                <img class="img-circle img-bordered-sm" src="{{asset('dist/img/user7-128x128.jpg')}}"
+                                    alt="User Image">
+                                <span class="username">
+                                    <a href="#">{{$aktiviti->nama_pengaju}}</a>
+                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                                </span>
+                                <span class="description">{{$aktiviti->created_at->translatedFormat(' d F Y')}} -
+                                    {{$aktiviti->created_at->diffForHumans()}}</span>
+                            </div>
+                            <!-- /.user-block -->
+                            <p>
+                                Pengajuan Cuti Atas Nama <b>{{strtoupper($aktiviti->nama_pengaju)}}</b> Jabatan Sebagai
+                                <b>{{strtoupper($aktiviti->jabatan_pengaju)}}</b>
+                                Pengajuan Cuti Di Ajukan Pada Tanggal <b>{{substr($aktiviti->tgl_cuti,0,10)}}</b> Sampai
+                                tanggal <b>{{substr($aktiviti->tgl_cuti,12,20)}}</b>
+                                Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
+                            </p>
+                        </div>
+                        <button class="btn btn-warning btn-block" disabled>PENGAJUAN CUTI ANDA TIDAK DI APPROV OLEH
+                            KEPALA DEVISI</button>
                         @endif
                         @endforeach
                         <!-- /.post -->

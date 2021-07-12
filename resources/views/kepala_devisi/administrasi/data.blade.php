@@ -44,6 +44,29 @@
                             <button class="btn btn-warning">APPROVAL</button>
                             <a href="{{Route('kepala.tolak',$aktiviti->id_cuti)}}" class="btn btn-danger">TOLAK</a>
                         </form>
+                        @elseif ($aktiviti->status == '3')
+                        <div class="post clearfix">
+                            <div class="user-block">
+                                <img class="img-circle img-bordered-sm" src="{{asset('dist/img/user7-128x128.jpg')}}"
+                                    alt="User Image">
+                                <span class="username">
+                                    <a href="#">{{$aktiviti->nama_pengaju}}</a>
+                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                                </span>
+                                <span class="description">{{$aktiviti->created_at->translatedFormat(' d F Y')}} -
+                                    {{$aktiviti->created_at->diffForHumans()}}</span>
+                            </div>
+                            <!-- /.user-block -->
+                            <p>
+                                Pengajuan Cuti Atas Nama <b>{{strtoupper($aktiviti->nama_pengaju)}}</b> Jabatan Sebagai
+                                <b>{{strtoupper($aktiviti->jabatan_pengaju)}}</b>
+                                Pengajuan Cuti Di Ajukan Pada Tanggal <b>{{substr($aktiviti->tgl_cuti,0,10)}}</b> Sampai
+                                tanggal <b>{{substr($aktiviti->tgl_cuti,12,20)}}</b>
+                                Karena Keperluan <b>{{strtoupper($aktiviti->keterangan)}}</b>
+                            </p>
+                        </div>
+                        <button class="btn btn-warning btn-block" disabled>PENGAJUAN CUTI ANDA TIDAK DI APPROV OLEH
+                            KEPALA DEVISI</button>
                         @endif
                         @endforeach
                         <!-- /.post -->

@@ -79,6 +79,7 @@
         </footer>
     </div>
     @include('hrd.modal.add_karyawan')
+    @include('kepala_devisi.marketing.modal.penilaian');
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->

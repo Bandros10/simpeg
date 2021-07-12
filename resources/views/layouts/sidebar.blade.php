@@ -81,6 +81,14 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('evaluasi.index')}}" class="nav-link">
+                            <i class="fas fa-business-time nav-icon"></i>
+                            <p>Evaluasi Kerja</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
             @endrole
             @role('kepala devisi marketing')
@@ -92,6 +100,14 @@
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('market.all')}}" class="nav-link">
+                            <i class="fas fa-restroom"></i>
+                            <p>Data Pegawai Devisi Administrai</p>
+                        </a>
+                    </li>
+                </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="{{route('aproval.kepala.index.marketing')}}" class="nav-link">
@@ -106,10 +122,18 @@
                 <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
-                        KEPALA DEVISI MENU
+                        KEPALA DEVISI MENU ADMINISTRASI
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('admin.all')}}" class="nav-link">
+                            <i class="fas fa-restroom"></i>
+                            <p>Data Pegawai Devisi Administrai</p>
+                        </a>
+                    </li>
+                </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="{{route('aproval.kepala.index.administrasi')}}" class="nav-link">

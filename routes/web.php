@@ -42,13 +42,27 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/HRD/Aproval_cuti/{id}', 'AprovController@data_aproval_cuti')->name('aproval.show');
         Route::post('/HRD/Aproval_cuti/{id_cuti}/approv', 'AprovController@update_status_approv')->name('aproval.update');
         Route::get('/catak/form_cuti/{id_cuti}','AprovController@cetak_form')->name('cetak.form_izin_cuti');
+        /**
+         * evaluasi controler
+         */
+        Route::resource('evaluasi', 'EvaluasiController')->except(['show']);
     });
     Route::group(['middleware' => ['role:kepala devisi marketing|kepala devisi administrasi']], function(){
-        Route::get('/kepala_devisi/Aproval_cuti/marketing', 'KepalaController@index_marketing')->name('aproval.kepala.index.marketing');
-        Route::get('/kepala_devisi/Aproval_cuti/administrasi', 'KepalaController@index_administrasi')->name('aproval.kepala.index.administrasi');
-        Route::get('/kepala_devisi/Aproval_cuti/marketing/{id}', 'KepalaController@data_cuti_kepala_marketing')->name('kepala.show.marketing');
+        Route::get('kepala_devisi/tolak/pengajuan/{id}','KepalaController@tolak')->name('kepala.tolak');
         Route::post('kepala_devisi/update/{id}','KepalaController@update')->name('kepala.update');
-        Route::get('kepala_devisi/tolak/marketing/{id}','KepalaController@tolak_marketing')->name('kepala.tolak.marketing');
+        /**
+         * marketing
+         */
+        Route::get('/kepala_devisi/Aproval_cuti/marketing', 'KepalaController@index_marketing')->name('aproval.kepala.index.marketing');
+        Route::get('/kepala_devisi/Aproval_cuti/marketing/{id}', 'KepalaController@data_cuti_kepala_marketing')->name('kepala.show.marketing');
+        Route::get('/all_pegawai/marketing','KepalaController@allmarketing')->name('market.all');
+        Route::get('/penilaiana/{id}/maketing','KepalaController@penilaian_marketing')->name('penilaian.pegawai.marketing');
+        /**
+         * administrasi
+         */
+        Route::get('/kepala_devisi/Aproval_cuti/adminitrasi', 'KepalaController@index_administrasi')->name('aproval.kepala.index.administrasi');
+        Route::get('/kepala_devisi/Aproval_cuti/adminitrasi/{id}', 'KepalaController@data_cuti_kepala_administrasi')->name('kepala.show.administrasi');
+        Route::get('/all_pegawai/administrasi','KepalaController@alladministrasi')->name('admin.all');
     });
     Route::group(['middleware' => ['role:karyawan']], function(){
         Route::resource('/karyawan/cuti', 'KaryawanController');
@@ -56,5 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 
 

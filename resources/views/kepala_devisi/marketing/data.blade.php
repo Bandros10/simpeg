@@ -42,7 +42,7 @@
                                 <form action="{{route('kepala.update',$aktiviti->id_cuti)}}" method="POST">
                                     {{ csrf_field() }}
                                     <button class="btn btn-warning">APPROVAL</button>
-                                    <a href="{{Route('kepala.tolak.marketing',$aktiviti->id_cuti)}}" class="btn btn-danger">TOLAK</a>
+                                    <a href="{{Route('kepala.tolak',$aktiviti->id_cuti)}}" class="btn btn-danger">TOLAK</a>
                                 </form>
                                 @elseif ($aktiviti->status == '3')
                                 <div class="post clearfix">

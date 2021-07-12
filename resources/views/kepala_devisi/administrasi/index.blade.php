@@ -35,7 +35,7 @@
                             <td>{{$administrasi->jabatan}}</td>
                             <td>{{$administrasi->telepon}}</td>
                             <td>
-                                <a href="{{route('kepala.show',$administrasi->id_pegawai)}}"
+                                <a href="{{route('kepala.show.administrasi',$administrasi->id_pegawai)}}"
                                     class="btn btn-info btn-sm"><i class="fas fa-file-alt"></i> Data cuti</a>
                             </td>
                         </tr>
