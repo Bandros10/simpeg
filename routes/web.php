@@ -42,14 +42,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/HRD/Aproval_cuti/{id}', 'AprovController@data_aproval_cuti')->name('aproval.show');
         Route::post('/HRD/Aproval_cuti/{id_cuti}/approv', 'AprovController@update_status_approv')->name('aproval.update');
         Route::get('/catak/form_cuti/{id_cuti}','AprovController@cetak_form')->name('cetak.form_izin_cuti');
-        /**
-         * evaluasi controler
-         */
-        Route::resource('evaluasi', 'EvaluasiController')->except(['show']);
     });
     Route::group(['middleware' => ['role:kepala devisi marketing|kepala devisi administrasi']], function(){
         Route::get('kepala_devisi/tolak/pengajuan/{id}','KepalaController@tolak')->name('kepala.tolak');
         Route::post('kepala_devisi/update/{id}','KepalaController@update')->name('kepala.update');
+        Route::resource('evaluasi', 'EvaluasiController')->except(['show']);
         /**
          * marketing
          */

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\cuti;
 use App\Models\pegawai;
+use App\Models\evaluasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +26,9 @@ class KepalaController extends Controller
     }
 
     public function penilaian_marketing($id){
-        return redirect()->back();
+        $penilaian = pegawai::find($id);
+        $ev = evaluasi::all();
+        return view('kepala_devisi.marketing.penilaian',compact('penilaian','ev'));
     }
 
     public function index_administrasi(){

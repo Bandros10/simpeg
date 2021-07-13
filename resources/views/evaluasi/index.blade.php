@@ -18,7 +18,7 @@
                     required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="name">Bobot</label>
+                    <label for="name">Skor</label>
                     <input type="number" name="bobot" class="form-control {{ $errors->has('bobot') ? 'is-invalid':'' }}"
                         id="bobot" required>
                 </div>
@@ -41,7 +41,7 @@
                         <tr>
                             <td>No</td>
                             <td>Keterangan</td>
-                            <td>Bobot</td>
+                            <td>Skor</td>
                             <td>Aksi</td>
                         </tr>
                     </thead>

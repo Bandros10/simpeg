@@ -81,14 +81,6 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{route('evaluasi.index')}}" class="nav-link">
-                            <i class="fas fa-business-time nav-icon"></i>
-                            <p>Evaluasi Kerja</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
             @endrole
             @role('kepala devisi marketing')
@@ -116,6 +108,14 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('evaluasi.index')}}" class="nav-link">
+                            <i class="fas fa-business-time nav-icon"></i>
+                            <p>Evaluasi Kerja</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
             @elserole('kepala devisi administrasi')
             <li class="nav-item menu-open">
@@ -139,6 +139,14 @@
                         <a href="{{route('aproval.kepala.index.administrasi')}}" class="nav-link">
                             <i class="fas fa-business-time nav-icon"></i>
                             <p>Data Pengajuan Cuti</p>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('evaluasi.index')}}" class="nav-link">
+                            <i class="fas fa-business-time nav-icon"></i>
+                            <p>Evaluasi Kerja</p>
                         </a>
                     </li>
                 </ul>

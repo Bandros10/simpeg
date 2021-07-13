@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -79,7 +81,6 @@
         </footer>
     </div>
     @include('hrd.modal.add_karyawan')
-    @include('kepala_devisi.marketing.modal.penilaian');
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
