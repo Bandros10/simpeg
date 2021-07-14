@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cuti;
 use App\Models\pegawai;
 use App\Models\evaluasi;
+use App\Models\penilaian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,10 +26,10 @@ class KepalaController extends Controller
         return view('kepala_devisi.marketing.all',compact('all_marketing'));
     }
 
-    public function penilaian_marketing($id){
+    public function penilaian($id){
         $penilaian = pegawai::find($id);
         $ev = evaluasi::all();
-        return view('kepala_devisi.marketing.penilaian',compact('penilaian','ev'));
+        return view('kepala_devisi.penilaian',compact('penilaian','ev'));
     }
 
     public function index_administrasi(){
@@ -57,5 +58,15 @@ class KepalaController extends Controller
     public function tolak($id){
         DB::table('cutis')->where('id_cuti',$id)->update(['status'=>3]);
         return redirect()->back()->with('error','Pengajuan Cuti tidak di approv');
+    }
+
+    public function penilaian_store(Request $request){
+        $request =  request()->except(['_token']);
+        try {
+            penilaian::firstOrCreate($request);
+            return redirect()->route('home')->with('sukses','Data Pegawai telah di nilai');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error','evaluasi pada tanggal ini sudah di lakukan');
+        }
     }
 }

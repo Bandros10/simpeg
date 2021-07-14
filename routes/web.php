@@ -47,13 +47,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('kepala_devisi/tolak/pengajuan/{id}','KepalaController@tolak')->name('kepala.tolak');
         Route::post('kepala_devisi/update/{id}','KepalaController@update')->name('kepala.update');
         Route::resource('evaluasi', 'EvaluasiController')->except(['show']);
+        Route::get('/penilaiana/pegawai/{id}','KepalaController@penilaian')->name('penilaian.pegawai');
+        Route::post('/penilaiana/simpan','KepalaController@penilaian_store')->name('simpan.penilaian.pegawai');
         /**
          * marketing
          */
         Route::get('/kepala_devisi/Aproval_cuti/marketing', 'KepalaController@index_marketing')->name('aproval.kepala.index.marketing');
         Route::get('/kepala_devisi/Aproval_cuti/marketing/{id}', 'KepalaController@data_cuti_kepala_marketing')->name('kepala.show.marketing');
         Route::get('/all_pegawai/marketing','KepalaController@allmarketing')->name('market.all');
-        Route::get('/penilaiana/{id}/maketing','KepalaController@penilaian_marketing')->name('penilaian.pegawai.marketing');
         /**
          * administrasi
          */

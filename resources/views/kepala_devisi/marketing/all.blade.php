@@ -56,7 +56,7 @@
                                 <td><p style="color: red">tidak sedang menempuh pendidikan</p></td>
                                 @endif
                                 <td>
-                                    <a href="{{route('penilaian.pegawai.marketing',$marketing_data->id_pegawai)}}" class="btn btn-sm btn-info"> Penilaian</a>
+                                    <a href="{{route('penilaian.pegawai',$marketing_data->id_pegawai)}}" class="btn btn-sm btn-info"> Penilaian</a>
                                     {{-- <a href="{{route('penilaian.pegawai.marketing',$marketing_data->id_pegawai)}}" class="btn btn-sm btn-info"> Penilaian</a> --}}
                                 </td>
                             </tr>

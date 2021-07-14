@@ -56,11 +56,7 @@
                                 <td><p style="color: red">tidak sedang menempuh pendidikan</p></td>
                                 @endif
                                 <td>
-                                    {{-- <form action="{{route('data_pegawai.destroy',$peg->id_pegawai)}}" method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
-                                    </form> --}}
+                                    <a href="{{route('penilaian.pegawai',$admin_data->id_pegawai)}}" class="btn btn-sm btn-info"> Penilaian</a>
                                 </td>
                             </tr>
                         @endforeach
