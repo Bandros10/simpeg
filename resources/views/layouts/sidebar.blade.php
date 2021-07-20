@@ -116,14 +116,6 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{route('evaluasi.index')}}" class="nav-link">
-                            <i class="fas fa-business-time nav-icon"></i>
-                            <p>Evaluasi Kerja</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
             @elserole('kepala devisi administrasi')
             <li class="nav-item menu-open">

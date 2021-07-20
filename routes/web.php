@@ -66,7 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/karyawan/cuti', 'KaryawanController');
     });
 });
-
+Route::post('upload/{id}','UploadController@update')->name('upload.photo');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

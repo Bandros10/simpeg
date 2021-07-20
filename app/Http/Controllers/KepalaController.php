@@ -61,12 +61,14 @@ class KepalaController extends Controller
     }
 
     public function penilaian_store(Request $request){
+        $tanggal = $request->tanggal;
+        $id = $request->id_pegawai;
         $request =  request()->except(['_token']);
-        try {
-            penilaian::firstOrCreate($request);
-            return redirect()->route('home')->with('sukses','Data Pegawai telah di nilai');
-        } catch (\Throwable $th) {
+        if (penilaian::where([['tanggal', '=', $tanggal],['id_pegawai','=',$id]])->exists()) {
             return redirect()->back()->with('error','evaluasi pada tanggal ini sudah di lakukan');
+        } else {
+            penilaian::firstOrCreate($request);
         }
+        return redirect()->route('home')->with('sukses','Data penilaian Pegawai telah di nilai');
     }
 }

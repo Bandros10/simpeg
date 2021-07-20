@@ -36,7 +36,6 @@
                         <tr>
                             <td>No</td>
                             <td>Keterangan</td>
-                            <td>Skor</td>
                             <td>Aksi</td>
                         </tr>
                     </thead>
@@ -46,7 +45,6 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $evaluasi->keterangan }}</td>
-                            <td>{{ $evaluasi->bobot }}</td>
                             <td>
                                 <form action="{{route('evaluasi.destroy',$evaluasi->id_evaluasi)}}" method="POST">
                                     {{ csrf_field() }}
