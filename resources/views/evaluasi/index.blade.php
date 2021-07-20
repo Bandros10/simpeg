@@ -17,11 +17,6 @@
                     class="form-control {{ $errors->has('keterangan') ? 'is-invalid':'' }}" id="keterangan"
                     required></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="name">Skor</label>
-                    <input type="number" name="bobot" class="form-control {{ $errors->has('bobot') ? 'is-invalid':'' }}"
-                        id="bobot" required>
-                </div>
                 <button class="btn btn-primary">Simpan</button>
                 @slot('footer')
 

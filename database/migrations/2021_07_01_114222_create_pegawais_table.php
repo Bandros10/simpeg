@@ -17,6 +17,7 @@ class CreatePegawaisTable extends Migration
             $table->increments('id_pegawai');
             $table->string('nama_depan');
             $table->string('nama_belakang');
+            $table->string('nik');
             $table->string('devisi');
             $table->string('jabatan');
             $table->string('status');

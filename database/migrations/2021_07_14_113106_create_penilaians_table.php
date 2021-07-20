@@ -23,6 +23,7 @@ class CreatePenilaiansTable extends Migration
             $table->string('penilai');
             $table->integer('bobot_nilai');
             $table->text('keterangan');
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });
     }

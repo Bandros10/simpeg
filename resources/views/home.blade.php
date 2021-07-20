@@ -19,6 +19,20 @@
 </div>
 <hr>
 <div class="row">
+    @role("HRD")
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="fas fa-restroom"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Pegawai</span>
+            <span class="info-box-number">{{$pegawai}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+    @endrole
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box">
           <span class="info-box-icon bg-info"><i class="fas fa-bullhorn"></i></span>

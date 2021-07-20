@@ -336,6 +336,7 @@
                                     </div> --}}
                                     <!-- /.tab-pane -->
 
+
                                     <div class="active tab-pane" id="settings">
                                         <form action="{{route('data_pegawai.update',$show->id_pegawai)}}" method="POST">
                                             {{ csrf_field() }}
@@ -343,98 +344,100 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Name:</label>
                                                 <div class="col-sm-5">
-                                                    <input type="text" name="nama_depan" class="form-control" placeholder="{{$show->nama_depan}}">
+                                                    <input type="text" name="nama_depan" class="form-control" value="{{$show->nama_depan}}">
                                                 </div>
                                                 <div class="col-sm-5">
-                                                    <input type="text" name="nama_belakang" class="form-control" placeholder="{{$show->nama_belakang}}">
+                                                    <input type="text" name="nama_belakang" class="form-control" value="{{$show->nama_belakang}}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Email & Telepon:</label>
                                                 <div class="col-sm-5">
-                                                    <input type="email" name="email" class="form-control" placeholder="{{$show->email}}">
+                                                    <input type="email" name="email" class="form-control" value="{{$show->email}}">
                                                 </div>
                                                 <div class="col-sm-5">
-                                                    <input type="text" name="telepon" class="form-control" placeholder="{{$show->telepon}}">
+                                                    <input type="text" name="telepon" class="form-control" value="{{$show->telepon}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">NIK:</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" name="nik" class="form-control" value="{{$show->nik}}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="inputName2" class="col-sm-2 col-form-label">Tanggungan:</label>
                                                 <div class="col-sm-1">
-                                                    <input type="text" name="tanggungan" class="form-control" placeholder="{{$show->tanggungan}}">
+                                                    <input type="text" name="tanggungan" class="form-control" value="{{$show->tanggungan}}">
                                                 </div>
                                                 <label for="inputName2" class="col-sm-1 col-form-label">Devisi:</label>
                                                 <div class="col-sm-2">
-                                                    <input type="text" name="devisi" class="form-control" placeholder="{{$show->devisi}}">
+                                                    <input type="text" name="devisi" class="form-control" value="{{$show->devisi}}">
                                                 </div>
                                                 <label for="inputName2" class="col-sm-1 col-form-label">Jabatan:</label>
                                                 <div class="col-sm-5">
-                                                    <input type="text" name="jabatan" class="form-control" placeholder="{{$show->jabatan}}">
+                                                    <input type="text" name="jabatan" class="form-control" value="{{$show->jabatan}}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Status:</label>
                                                 <div class="col-sm-2">
                                                     <select name="status" class="form-control">
-                                                        <option selected disabled>{{$show->status}}</option>
-                                                        <option value="Menikah">Menikah</option>
-                                                        <option value="Belum Menikah">Belum Menikah</option>
+                                                        <option value="Menikah" @if(old('status', $show->status) === 'Menikah') 'selected' @endif>Menikah</option>
+                                                        <option value="Belum Menikah" @if(old('status', $show->status) === 'Belum Menikah') 'selected' @endif>Belum Menikah</option>
                                                     </select>
                                                 </div>
                                                 <label class="col-sm-1 col-form-label">Agama:</label>
                                                 <div class="col-sm-2">
                                                     <select name="agama" class="form-control">
-                                                        <option selected disabled>{{$show->agama}}</option>
-                                                        <option value="Islam">Islam</option>
-                                                        <option value="kristen Protestan">Kristen Protestan</option>
-                                                        <option value="kristen Katolik">Kristen Katolik</option>
-                                                        <option value="Hindu">Hindu</option>
-                                                        <option value="Budha">Budha</option>
-                                                        <option value="Konghuchu">Konghuchu</option>
-                                                        <option value="Lainnya">Lainnya</option>
+                                                        <option value="Islam" @if(old('agama', $show->agama) === 'Islam') 'selected' @endif>Islam</option>
+                                                        <option value="kristen Protestan" @if(old('agama', $show->agama) === 'kristen Protestan') 'selected' @endif>Kristen Protestan</option>
+                                                        <option value="kristen Katolik" @if(old('agama', $show->agama) === 'kristen Katolik') 'selected' @endif>Kristen Katolik</option>
+                                                        <option value="Hindu" @if(old('agama', $show->agama) === 'Hindu') 'selected' @endif>Hindu</option>
+                                                        <option value="Budha" @if(old('agama', $show->agama) === 'Budha') 'selected' @endif>Budha</option>
+                                                        <option value="Konghuchu" @if(old('agama', $show->agama) === 'Konghuchu') 'selected' @endif>Konghuchu</option>
+                                                        <option value="Lainnya" @if(old('agama', $show->agama) === 'Lainnya') 'selected' @endif>Lainnya</option>
                                                     </select>
                                                 </div>
                                                 <label class="col-sm-1 col-form-label">Gender:</label>
                                                 <div class="col-sm-4">
                                                     <select name="jenis_kelamin" class="form-control">
-                                                        <option selected disabled>{{$show->jenis_kelamin}}</option>
-                                                        <option value="laki-laki">Laki-Laki</option>
-                                                        <option value="Perempuan">Perempuan</option>
+                                                        <option value="laki-laki" @if(old('jenis_kelamin', $show->jenis_kelamin) === 'laki-laki') 'selected' @endif>Laki-Laki</option>
+                                                        <option value="Perempuan" @if(old('jenis_kelamin', $show->jenis_kelamin) === 'Perempuan') 'selected' @endif>Perempuan</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Alamat:</label>
                                                 <div class="col-sm-10">
-                                                    <textarea class="form-control" name="alamat" placeholder="{{$show->alamat}}"></textarea>
+                                                    <textarea class="form-control" name="alamat"> {{$show->alamat}}</textarea>
                                                     <sup style="color: red">*alamat harus sesuai dengan kartu tanda penduduk</sup>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Tempat tanggal lahir:</label>
                                                 <div class="col-sm-5">
-                                                    <input type="text" class="form-control" name="tempat_lahir" placeholder="{{$show->tempat_lahir}}">
+                                                    <input type="text" class="form-control" name="tempat_lahir" value="{{$show->tempat_lahir}}">
                                                 </div>
                                                 <div class="col-sm-5">
-                                                    <input placeholder="{{Carbon\Carbon::parse($show->tanggal_lahir)->translatedFormat('d F Y')}}" class="form-control" type="text" onfocus="(this.type='date')">
+                                                    <input value="{{Carbon\Carbon::parse($show->tanggal_lahir)->translatedFormat('d F Y')}}" class="form-control" type="text" onfocus="(this.type='date')">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Pendidikan terakhir:</label>
                                                 <div class="col-sm-5">
                                                     <select name="pend_terakhir" class="form-control">
-                                                        <option selected disabled>{{$show->pend_terakhir}}</option>
-                                                        <option value="SD">SD</option>
-                                                        <option value="SMP SEDERAJAT">SMP SEDERAJAT</option>
-                                                        <option value="SMA SEDERAJAT">SMA SEDERAJAT</option>
-                                                        <option value="S1">S1</option>
-                                                        <option value="S2">S2</option>
-                                                        <option value="S3">S3</option>
+                                                        <option value="SD" @if(old('pend_terakhir', $show->pend_terakhir) === 'SD') 'selected' @endif>SD</option>
+                                                        <option value="SMP SEDERAJAT" @if(old('pend_terakhir', $show->pend_terakhir) === 'SMP SEDERAJAT') 'selected' @endif>SMP SEDERAJAT</option>
+                                                        <option value="SMA SEDERAJAT" @if(old('pend_terakhir', $show->pend_terakhir) === 'SMA SEDERAJAT') 'selected' @endif>SMA SEDERAJAT</option>
+                                                        <option value="S1" @if(old('pend_terakhir', $show->pend_terakhir) === 'S1') 'selected' @endif>S1</option>
+                                                        <option value="S2" @if(old('pend_terakhir', $show->pend_terakhir) === 'S2') 'selected' @endif>S2</option>
+                                                        <option value="S3" @if(old('pend_terakhir', $show->pend_terakhir) === 'S3') 'selected' @endif>S3</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-5">
                                                     @if (!empty($show->pend_ditempuh))
-                                                        <input type="text" class="form-control" name="pend_ditempuh" placeholder="{{$show->pend_ditempuh}}">
+                                                        <input type="text" class="form-control" name="pend_ditempuh" value="{{$show->pend_ditempuh}}">
                                                     @else
                                                         <input type="text" class="form-control" name="pend_ditempuh" placeholder="Tidak sedang menempuh pendidikan">
                                                     @endif

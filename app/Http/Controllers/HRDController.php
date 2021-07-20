@@ -17,7 +17,7 @@ class HRDController extends Controller
 
     public function store(Request $request){
         $pegawai = pegawai::where('email','=',$request->email)->first();
-        $pass = bcrypt($request->nama_depan.substr($request->telepon,9,13));
+        $pass = bcrypt($request->nik);
         // dd($pass)
         $nama = $request->nama_depan;
         // DB::select('CALL add_user(?, ?, ?)',[$request->post('nama_depan'),$request->post('email'),$pass]);
@@ -60,12 +60,13 @@ class HRDController extends Controller
         try {
             $pegawai_edit = pegawai::findOrFail($id_pegawai);
             $user_update = user::where('name','=',$get_nama)->first();
-            $pass = bcrypt($request->nama_depan.substr($request->telepon,9,13));
+            $pass = bcrypt($request->nik);
             /**
              * pegawai update
              */
             $nama_depan = !empty($request->nama_depan) ? $request->nama_depan:$pegawai_edit->nama_depan;
             $nama_belakang = !empty($request->nama_belakang) ? $request->nama_belakang:$pegawai_edit->nama_belakang;
+            $nik = !empty($request->nik) ? $request->nik:$pegawai_edit->nik;
             $jabatan = !empty($request->jabatan) ? $request->jabatan:$pegawai_edit->jabatan;
             $tanggungan = !empty($request->tanggungan) ? $request->tanggungan:$pegawai_edit->tanggungan;
             $email = !empty($request->email) ? $request->email:$pegawai_edit->email;
@@ -83,12 +84,13 @@ class HRDController extends Controller
              * user update
              */
             $nama_depan_user = !empty($request->nama_depan) ? $request->nama_depan:$user_update->name;
-            $pass = bcrypt($nama_depan.substr($telepon,9,13));
+            $pass = bcrypt($nik);
             $password_update = !empty($user_update->password) ? $pass:$user_update->password;
 
             $pegawai_edit->update([
                                     'nama_depan' => $nama_depan,
                                     'nama_belakang' => $nama_belakang,
+                                    'nik' => $nik,
                                     'jabatan' => $jabatan,
                                     'tanggungan' => $tanggungan,
                                     'email' => $email,

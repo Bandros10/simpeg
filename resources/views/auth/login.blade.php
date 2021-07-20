@@ -50,7 +50,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="masukan password">
+                            class="form-control @error('password') is-invalid @enderror" name="password" maxlength="16" required autocomplete="current-password" placeholder="masukan password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

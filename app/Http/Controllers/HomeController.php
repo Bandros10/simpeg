@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cuti;
+use App\Models\pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +29,8 @@ class HomeController extends Controller
         $permintaan = cuti::all()->where('status','=',0)->count();
         $pending = cuti::all()->where('status','=',1)->count();
         $approval = cuti::all()->where('status','=',2)->count();
+        $pegawai = pegawai::all()->count();
         // dd($data_permintaan);
-        return view('home',compact('permintaan','approval','pending'));
+        return view('home',compact('permintaan','approval','pending','pegawai'));
     }
 }

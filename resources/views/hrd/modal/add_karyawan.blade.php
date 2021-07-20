@@ -30,8 +30,10 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="nama">Devisi</label>
-                                    <input type="text" class="form-control" name="devisi"
-                                        placeholder="masukan devisi" required>
+                                    <select class="form-control" name="devisi" placeholder="masukan devisi" required>
+                                        <option selected disabled>- Devisi -</option>
+                                        <option value="marketing">Marketing</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -43,7 +45,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="status">NIK</label>
+                                    <input type="text" class="form-control" name="nik" maxlength="16"
+                                        placeholder="Nomer NIK" required>
+                                </div>
+                            </div>
+                            <div class="col-3">
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select name="status" class="form-control" required>
@@ -53,7 +62,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="form-group">
                                     <label for="agama">Agama</label>
                                     <select name="agama" class="form-control" required>
@@ -68,7 +77,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="form-group">
                                     <label for="Jenis_kelamin">Jenis Kelamin</label>
                                     <select name="jenis_kelamin" class="form-control" required>

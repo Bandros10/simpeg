@@ -26,8 +26,11 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Name</label>
-                    <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }}"
-                        required>
+                    <select type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }}" required>
+                        <option disabled selected>-Pilih Permission-</option>
+                        <option value="edit">Edit</option>
+                        <option value="delete">Delete</option>
+                    </select>
                     <p class="text-danger">{{ $errors->first('name') }}</p>
                 </div>
                 <div class="form-group">
