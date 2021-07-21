@@ -63,7 +63,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/all_pegawai/administrasi','KepalaController@alladministrasi')->name('admin.all');
     });
     Route::group(['middleware' => ['role:karyawan']], function(){
-        Route::resource('/karyawan/cuti', 'KaryawanController');
+        Route::resource('/karyawan/cuti', 'KaryawanController')->except([
+            'create', 'show', 'edit', 'destroy'
+        ]);
+        Route::get('pegawai/profile','PegawaiController@profile')->name('pegawai.profile');
+        Route::post('pegawai/update/{id}','PegawaiController@update')->name('pegawai.update');
     });
 });
 Route::post('upload/{id}','UploadController@update')->name('upload.photo');

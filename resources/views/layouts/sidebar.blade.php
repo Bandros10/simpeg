@@ -6,7 +6,7 @@
             <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">{{auth()->user()->name}}</a>
+            <a href="{{route('pegawai.profile')}}" class="d-block">{{auth()->user()->name}}</a>
         </div>
     </div>
 
@@ -161,6 +161,14 @@
                         </a>
                     </li>
                 </ul>
+                {{-- <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('cuti.index')}}" class="nav-link">
+                            <i class="fas fa-user-clock nav-icon"></i>
+                            <p>Pengajuan Cuti</p>
+                        </a>
+                    </li>
+                </ul> --}}
             </li>
             @endrole
         </ul>
