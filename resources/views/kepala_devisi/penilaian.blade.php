@@ -60,11 +60,19 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            @foreach ($ev as $item)
-                            <div class="form-group">
-                                <label>{{$item->keterangan}}</label>&emsp;<input type="number" class="skor" value="{{$item->bobot}}">
+                            <div class="card">
+                                <div class="card-body">
+                                    @foreach ($ev as $item)
+                                        <div class="form-group">
+                                            <label>{{$item->keterangan}}</label>
+                                        </div>
+                                        <div class="card-footer">
+                                            <input type="number" class="skor" value="{{$item->bobot}}"> <label> Skor</label>
+                                        </div>
+                                        <hr>
+                                    @endforeach
+                                </div>
                             </div>
-                            @endforeach
                         </div>
                         <div class="col-4">
                             <div class="form-group">

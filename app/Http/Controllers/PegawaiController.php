@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\cuti;
-use App\Models\pegawai;
 use App\Models\User;
+use App\Models\pegawai;
+use App\Models\penilaian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -76,5 +77,17 @@ class PegawaiController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('warning','uppsss...!!! terjadi kesalahan');
         }
+    }
+
+    public function nilai(){
+        $nama = pegawai::where('nama_depan','=',auth()->user()->name)->first();
+        // dd($nama->nama_depan.' '.$nama->nama_belakang);
+        $nilai = penilaian::where('nama','=',$nama->nama_depan.' '.$nama->nama_belakang)->get();
+        return \view('karyawan.penilaian',\compact('nilai'));
+    }
+
+    public function konfirmasi($id){
+        penilaian::where([['id','=',$id]])->update(['status' => true]);
+        return redirect()->back()->with('sukses','anda telah menyetujuji penilaian');
     }
 }

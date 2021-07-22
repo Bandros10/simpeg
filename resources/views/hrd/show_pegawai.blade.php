@@ -383,27 +383,27 @@
                                                 <label class="col-sm-2 col-form-label">Status:</label>
                                                 <div class="col-sm-2">
                                                     <select name="status" class="form-control">
-                                                        <option value="Menikah" @if(old('status', $show->status) === 'Menikah') 'selected' @endif>Menikah</option>
-                                                        <option value="Belum Menikah" @if(old('status', $show->status) === 'Belum Menikah') 'selected' @endif>Belum Menikah</option>
+                                                        <option value="Menikah" @if(old('status', $show->status) === 'Menikah') selected @endif>Menikah</option>
+                                                        <option value="Belum Menikah" @if(old('status', $show->status) === 'Belum Menikah') selected @endif>Belum Menikah</option>
                                                     </select>
                                                 </div>
                                                 <label class="col-sm-1 col-form-label">Agama:</label>
                                                 <div class="col-sm-2">
                                                     <select name="agama" class="form-control">
-                                                        <option value="Islam" @if(old('agama', $show->agama) === 'Islam') 'selected' @endif>Islam</option>
-                                                        <option value="kristen Protestan" @if(old('agama', $show->agama) === 'kristen Protestan') 'selected' @endif>Kristen Protestan</option>
-                                                        <option value="kristen Katolik" @if(old('agama', $show->agama) === 'kristen Katolik') 'selected' @endif>Kristen Katolik</option>
-                                                        <option value="Hindu" @if(old('agama', $show->agama) === 'Hindu') 'selected' @endif>Hindu</option>
-                                                        <option value="Budha" @if(old('agama', $show->agama) === 'Budha') 'selected' @endif>Budha</option>
-                                                        <option value="Konghuchu" @if(old('agama', $show->agama) === 'Konghuchu') 'selected' @endif>Konghuchu</option>
-                                                        <option value="Lainnya" @if(old('agama', $show->agama) === 'Lainnya') 'selected' @endif>Lainnya</option>
+                                                        <option value="Islam" @if(old('agama', $show->agama) === 'Islam') selected @endif>Islam</option>
+                                                        <option value="kristen Protestan" @if(old('agama', $show->agama) === 'kristen Protestan') selected @endif>Kristen Protestan</option>
+                                                        <option value="kristen Katolik" @if(old('agama', $show->agama) === 'kristen Katolik') selected @endif>Kristen Katolik</option>
+                                                        <option value="Hindu" @if(old('agama', $show->agama) === 'Hindu') selected @endif>Hindu</option>
+                                                        <option value="Budha" @if(old('agama', $show->agama) === 'Budha') selected @endif>Budha</option>
+                                                        <option value="Konghuchu" @if(old('agama', $show->agama) === 'Konghuchu') selected @endif>Konghuchu</option>
+                                                        <option value="Lainnya" @if(old('agama', $show->agama) === 'Lainnya') selected @endif>Lainnya</option>
                                                     </select>
                                                 </div>
                                                 <label class="col-sm-1 col-form-label">Gender:</label>
                                                 <div class="col-sm-4">
                                                     <select name="jenis_kelamin" class="form-control">
-                                                        <option value="laki-laki" @if(old('jenis_kelamin', $show->jenis_kelamin) === 'laki-laki') 'selected' @endif>Laki-Laki</option>
-                                                        <option value="Perempuan" @if(old('jenis_kelamin', $show->jenis_kelamin) === 'Perempuan') 'selected' @endif>Perempuan</option>
+                                                        <option value="laki-laki" @if(old('jenis_kelamin', $show->jenis_kelamin) === 'laki-laki') selected @endif>Laki-Laki</option>
+                                                        <option value="Perempuan" @if(old('jenis_kelamin', $show->jenis_kelamin) === 'Perempuan') selected @endif>Perempuan</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -427,12 +427,12 @@
                                                 <label class="col-sm-2 col-form-label">Pendidikan terakhir:</label>
                                                 <div class="col-sm-5">
                                                     <select name="pend_terakhir" class="form-control">
-                                                        <option value="SD" @if(old('pend_terakhir', $show->pend_terakhir) === 'SD') 'selected' @endif>SD</option>
-                                                        <option value="SMP SEDERAJAT" @if(old('pend_terakhir', $show->pend_terakhir) === 'SMP SEDERAJAT') 'selected' @endif>SMP SEDERAJAT</option>
-                                                        <option value="SMA SEDERAJAT" @if(old('pend_terakhir', $show->pend_terakhir) === 'SMA SEDERAJAT') 'selected' @endif>SMA SEDERAJAT</option>
-                                                        <option value="S1" @if(old('pend_terakhir', $show->pend_terakhir) === 'S1') 'selected' @endif>S1</option>
-                                                        <option value="S2" @if(old('pend_terakhir', $show->pend_terakhir) === 'S2') 'selected' @endif>S2</option>
-                                                        <option value="S3" @if(old('pend_terakhir', $show->pend_terakhir) === 'S3') 'selected' @endif>S3</option>
+                                                        <option value="SD" @if(old('pend_terakhir', $show->pend_terakhir) === 'SD') selected @endif>SD</option>
+                                                        <option value="SMP SEDERAJAT" @if(old('pend_terakhir', $show->pend_terakhir) === 'SMP SEDERAJAT') selected @endif>SMP SEDERAJAT</option>
+                                                        <option value="SMA SEDERAJAT" @if(old('pend_terakhir', $show->pend_terakhir) === 'SMA SEDERAJAT') selected @endif>SMA SEDERAJAT</option>
+                                                        <option value="S1" @if(old('pend_terakhir', $show->pend_terakhir) === 'S1') selected @endif>S1</option>
+                                                        <option value="S2" @if(old('pend_terakhir', $show->pend_terakhir) === 'S2') selected @endif>S2</option>
+                                                        <option value="S3" @if(old('pend_terakhir', $show->pend_terakhir) === 'S3') selected @endif>S3</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-5">

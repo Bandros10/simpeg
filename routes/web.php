@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('kepala_devisi/update/{id}','KepalaController@update')->name('kepala.update');
         Route::get('/penilaiana/pegawai/{id}','KepalaController@penilaian')->name('penilaian.pegawai');
         Route::post('/penilaiana/simpan','KepalaController@penilaian_store')->name('simpan.penilaian.pegawai');
+        Route::get('/data/penialai','KepalaController@data_all_penilaian')->name('marketing.datapenilaian');
         /**
          * marketing
          */
@@ -68,6 +69,8 @@ Route::group(['middleware' => 'auth'], function () {
         ]);
         Route::get('pegawai/profile','PegawaiController@profile')->name('pegawai.profile');
         Route::post('pegawai/update/{id}','PegawaiController@update')->name('pegawai.update');
+        Route::get('pegawai/nilai','PegawaiController@nilai')->name('pegawai.nilai');
+        Route::post('konfirmasi/{id}','PegawaiController@konfirmasi')->name('konfirmasi');
     });
 });
 Route::post('upload/{id}','UploadController@update')->name('upload.photo');

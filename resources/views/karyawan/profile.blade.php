@@ -507,5 +507,4 @@
     </div><!-- /.container-fluid -->
     </section>
 </div>
-</div>
 @endsection

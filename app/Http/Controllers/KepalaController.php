@@ -71,4 +71,9 @@ class KepalaController extends Controller
         }
         return redirect()->route('home')->with('sukses','Data penilaian Pegawai telah di nilai');
     }
+
+    public function data_all_penilaian(){
+        $nilai_mar = penilaian::where('devisi','=','marketing')->get();
+        return \view('kepala_devisi.data_nilai',\compact('nilai_mar'));
+    }
 }

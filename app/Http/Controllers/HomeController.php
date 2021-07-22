@@ -30,7 +30,8 @@ class HomeController extends Controller
         $pending = cuti::all()->where('status','=',1)->count();
         $approval = cuti::all()->where('status','=',2)->count();
         $pegawai = pegawai::all()->count();
+        $pegawai_marketing = pegawai::where('devisi','=','marketing')->count();
         // dd($data_permintaan);
-        return view('home',compact('permintaan','approval','pending','pegawai'));
+        return view('home',compact('permintaan','approval','pending','pegawai','pegawai_marketing'));
     }
 }

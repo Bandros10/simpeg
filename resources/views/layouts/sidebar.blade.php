@@ -116,8 +116,16 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('marketing.datapenilaian')}}" class="nav-link">
+                            <i class="fas fa-paste nav-icon"></i>
+                            <p>Data Penilaian Pegawai</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            @elserole('kepala devisi administrasi')
+            {{-- @elserole('kepala devisi administrasi')
             <li class="nav-item menu-open">
                 <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-users"></i>
@@ -142,7 +150,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             @endrole
             @role('karyawan')
             <li class="nav-item menu-open">
@@ -161,14 +169,14 @@
                         </a>
                     </li>
                 </ul>
-                {{-- <ul class="nav nav-treeview">
+                <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('cuti.index')}}" class="nav-link">
-                            <i class="fas fa-user-clock nav-icon"></i>
-                            <p>Pengajuan Cuti</p>
+                        <a href="{{route('pegawai.nilai')}}" class="nav-link">
+                            <i class="fas fa-paste nav-icon"></i>
+                            <p>Penilaian</p>
                         </a>
                     </li>
-                </ul> --}}
+                </ul>
             </li>
             @endrole
         </ul>
