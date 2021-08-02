@@ -33,6 +33,7 @@
                                     <select class="form-control" name="devisi" placeholder="masukan devisi" required>
                                         <option selected disabled>- Devisi -</option>
                                         <option value="marketing">Marketing</option>
+                                        <option value="kepala divisi geodesi">Kepala divisi Geodesi</option>
                                     </select>
                                 </div>
                             </div>
