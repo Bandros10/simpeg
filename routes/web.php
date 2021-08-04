@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('pegawai/profile','PegawaiController@profile')->name('pegawai.profile');
         Route::post('pegawai/update/{id}','PegawaiController@update')->name('pegawai.update');
         Route::get('pegawai/nilai','PegawaiController@nilai')->name('pegawai.nilai');
+        Route::get('pegawai/detail/{id}','PegawaiController@detail')->name('pegawai.detail');
         Route::post('konfirmasi/{id}','PegawaiController@konfirmasi')->name('konfirmasi');
     });
 });

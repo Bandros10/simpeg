@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\pegawai;
 use App\Models\penilaian;
 use Illuminate\Http\Request;
+use App\Models\pegawai_penilaian;
 use Illuminate\Support\Facades\DB;
 
 class PegawaiController extends Controller
@@ -86,8 +87,13 @@ class PegawaiController extends Controller
         return \view('karyawan.penilaian',\compact('nilai'));
     }
 
+    public function detail($id){
+        $data_nilai = pegawai_penilaian::all()->where('id_pegawai','=',$id);
+        return \view('karyawan.pegawai_nilai',compact('data_nilai'));
+    }
+
     public function konfirmasi($id){
         penilaian::where([['id','=',$id]])->update(['status' => true]);
-        return redirect()->back()->with('sukses','anda telah menyetujuji penilaian');
+        return redirect('pegawai/nilai')->with('sukses','anda telah menyetujuji penilaian');
     }
 }

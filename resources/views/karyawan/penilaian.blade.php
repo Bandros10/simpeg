@@ -44,14 +44,12 @@
                                                         Penilaian kerja anda pada tanggal <b>{{Carbon\Carbon::parse($n->tanggal)->translatedFormat('d F Y')}}</b> sudah di lakukan, dari seluruh penilaian anda mendapat nilai <strong>{{$n->bobot_nilai}}</strong> tekan tombol di bawah jika anda menyetujui penilaian ini
                                                     </div>
                                                     <div class="timeline-footer">
-                                                        <form action="{{route('konfirmasi',$n->id)}}" method="POST">
-                                                            @csrf
-                                                            @if ($n->status != true)
-                                                                <button type="submit" class="btn btn-sm btn-info">Konfirmasi</button>
-                                                            @else
-                                                                <a href="" class="btn btn-sm btn-success">sudah di setujui</a>
-                                                            @endif
-                                                        </form>
+                                                        @if ($n->status != true)
+                                                            <a href="{{route('pegawai.detail',$n->id_pegawai)}}" class="btn btn-warning btn-sm">Detail</a>
+                                                        @else
+                                                            <a href="" class="btn btn-sm btn-success">sudah di setujui</a>
+                                                            <a href="" class="btn btn-sm btn-secondary">Cetak Hasil</a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

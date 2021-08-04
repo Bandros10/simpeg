@@ -7,6 +7,7 @@ use App\Models\pegawai;
 use App\Models\evaluasi;
 use App\Models\penilaian;
 use Illuminate\Http\Request;
+use App\Models\pegawai_penilaian;
 use Illuminate\Support\Facades\DB;
 
 class KepalaController extends Controller
@@ -63,11 +64,32 @@ class KepalaController extends Controller
     public function penilaian_store(Request $request){
         $tanggal = $request->tanggal;
         $id = $request->id_pegawai;
-        $request =  request()->except(['_token']);
         if (penilaian::where([['tanggal', '=', $tanggal],['id_pegawai','=',$id]])->exists()) {
             return redirect()->back()->with('error','evaluasi pada tanggal ini sudah di lakukan');
         } else {
-            penilaian::firstOrCreate($request);
+            $penilaian = new penilaian;
+            $penilaian->id_pegawai = $id;
+            $penilaian->nama = $request->nama;
+            $penilaian->devisi = $request->devisi;
+            $penilaian->jabatan = $request->jabatan;
+            $penilaian->tanggal = $request->tanggal;
+            $penilaian->penilai = $request->penilai;
+            $penilaian->bobot_nilai = $request->bobot_nilai;
+            $penilaian->keterangan = $request->keterangan;
+            $penilaian->status = $request->status;
+            $penilaian->save();
+
+            if(count($request->instrumen)>0){
+                foreach($request->instrumen as $item=>$v){
+                    $data2=array(
+                        'id_pegawai'=> $id,
+                        'instrumen'=>$request->instrumen[$item],
+                        'nilai'=>$request->nilai[$item],
+                    );
+                    // dd($data2);
+                    pegawai_penilaian::insert($data2);
+                }
+            }
         }
         return redirect()->route('home')->with('sukses','Data penilaian Pegawai telah di nilai');
     }

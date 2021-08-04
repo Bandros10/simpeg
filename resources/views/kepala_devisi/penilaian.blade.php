@@ -64,10 +64,10 @@
                                 <div class="card-body">
                                     @foreach ($ev as $item)
                                         <div class="form-group">
-                                            <label>{{$item->keterangan}}</label>
+                                            <textarea name="instrumen[]" readonly class="form-control">{{$item->keterangan}}</textarea>
                                         </div>
                                         <div class="card-footer">
-                                            <input type="number" class="skor" value="{{$item->bobot}}"> <label> Skor</label>
+                                            <input type="number" name="nilai[]" class="skor" value="{{$item->bobot}}"> <label> Skor</label>
                                         </div>
                                         <hr>
                                     @endforeach
@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="alamat">Keterangan</label>
+                                <label>Keterangan</label>
                                 <textarea class="form-control" name="keterangan" required></textarea>
                             </div>
                         </div>
