@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('pegawai/update/{id}','PegawaiController@update')->name('pegawai.update');
         Route::get('pegawai/nilai','PegawaiController@nilai')->name('pegawai.nilai');
         Route::get('pegawai/detail/{id}','PegawaiController@detail')->name('pegawai.detail');
+        Route::get('pegawai/cetak/{id}','PegawaiController@cetak')->name('pegawai.cetak_hasil');
         Route::post('konfirmasi/{id}','PegawaiController@konfirmasi')->name('konfirmasi');
     });
 });

@@ -9,6 +9,7 @@ use App\Models\penilaian;
 use Illuminate\Http\Request;
 use App\Models\pegawai_penilaian;
 use Illuminate\Support\Facades\DB;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class PegawaiController extends Controller
 {
@@ -95,5 +96,50 @@ class PegawaiController extends Controller
     public function konfirmasi($id){
         penilaian::where([['id','=',$id]])->update(['status' => true]);
         return redirect('pegawai/nilai')->with('sukses','anda telah menyetujuji penilaian');
+    }
+
+    public function cetak($id){
+        $data_peg = DB::table('penilaians')->where('id_pegawai',$id)->first();
+        $data_nil = DB::table('pegawai_penilaians')->where([['id_pegawai',$id],['created_at',$data_peg->created_at]])->select('pegawai_penilaians.*')->get();
+        // dd($data_peg->penilai);
+        $templateProcessor = new TemplateProcessor('template/lembar_penilaian.docx');
+        $templateProcessor->setValue('nama_karyawan', strtoupper($data_peg->nama));
+        $templateProcessor->setValue('devisi', strtoupper($data_peg->devisi));
+        $templateProcessor->setValue('penilai', strtoupper($data_peg->penilai));
+        $templateProcessor->setValue('jabatan', strtoupper($data_peg->jabatan));
+        $templateProcessor->setValue('dis_waktu', $data_nil[0]->instrumen);
+        $templateProcessor->setValue('dis_waktu_nil', $data_nil[0]->nilai);
+        $templateProcessor->setValue('tanggung_jawab', $data_nil[1]->instrumen);
+        $templateProcessor->setValue('tanggung_jawab_nil', $data_nil[1]->nilai);
+        $templateProcessor->setValue('leadership', $data_nil[2]->instrumen);
+        $templateProcessor->setValue('leadership_nil', $data_nil[2]->nilai);
+        $templateProcessor->setValue('etika', $data_nil[3]->instrumen);
+        $templateProcessor->setValue('etika_nil', $data_nil[3]->nilai);
+        $templateProcessor->setValue('kom', $data_nil[4]->instrumen);
+        $templateProcessor->setValue('kom_nil', $data_nil[4]->nilai);
+        $templateProcessor->setValue('kerja_baru', $data_nil[5]->instrumen);
+        $templateProcessor->setValue('kerja_baru_nil', $data_nil[5]->nilai);
+        $templateProcessor->setValue('belajar', $data_nil[6]->instrumen);
+        $templateProcessor->setValue('belajar_nil', $data_nil[6]->nilai);
+        $templateProcessor->setValue('kemampuan', $data_nil[7]->instrumen);
+        $templateProcessor->setValue('kemampuan_nil', $data_nil[7]->nilai);
+        $templateProcessor->setValue('team', $data_nil[8]->instrumen);
+        $templateProcessor->setValue('team_nil', $data_nil[8]->nilai);
+        $templateProcessor->setValue('SOP', $data_nil[9]->instrumen);
+        $templateProcessor->setValue('SOP_nil', $data_nil[9]->nilai);
+        $templateProcessor->setValue('gagasan', $data_nil[10]->instrumen);
+        $templateProcessor->setValue('gagasan_nil', $data_nil[10]->nilai);
+        $templateProcessor->setValue('diskusi', $data_nil[11]->instrumen);
+        $templateProcessor->setValue('diskusi_nil', $data_nil[11]->nilai);
+        $templateProcessor->setValue('sup', $data_nil[12]->instrumen);
+        $templateProcessor->setValue('sup_nil', $data_nil[12]->nilai);
+        $templateProcessor->setValue('motivasi', $data_nil[13]->instrumen);
+        $templateProcessor->setValue('motivasi_nil', $data_nil[13]->nilai);
+        $templateProcessor->setValue('inisiatif', $data_nil[14]->instrumen);
+        $templateProcessor->setValue('inisiatif_nil', $data_nil[14]->nilai);
+
+        $fileName = (strtoupper($data_peg->nama).".". $data_peg->jabatan.".". $data_peg->tanggal);
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 }

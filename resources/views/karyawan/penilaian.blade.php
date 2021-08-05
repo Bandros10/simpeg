@@ -48,7 +48,7 @@
                                                             <a href="{{route('pegawai.detail',$n->id_pegawai)}}" class="btn btn-warning btn-sm">Detail</a>
                                                         @else
                                                             <a href="" class="btn btn-sm btn-success">sudah di setujui</a>
-                                                            <a href="" class="btn btn-sm btn-secondary">Cetak Hasil</a>
+                                                            <a href="{{route('pegawai.cetak_hasil',$n->id_pegawai)}}" class="btn btn-sm btn-secondary">Cetak Hasil</a>
                                                         @endif
                                                     </div>
                                                 </div>

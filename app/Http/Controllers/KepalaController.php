@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\cuti;
 use App\Models\pegawai;
 use App\Models\evaluasi;
@@ -77,6 +78,8 @@ class KepalaController extends Controller
             $penilaian->bobot_nilai = $request->bobot_nilai;
             $penilaian->keterangan = $request->keterangan;
             $penilaian->status = $request->status;
+            $penilaian->created_at = Carbon::now();
+            $penilaian->updated_at = Carbon::now();
             $penilaian->save();
 
             if(count($request->instrumen)>0){
@@ -85,6 +88,8 @@ class KepalaController extends Controller
                         'id_pegawai'=> $id,
                         'instrumen'=>$request->instrumen[$item],
                         'nilai'=>$request->nilai[$item],
+                        'created_at'=>Carbon::now(),
+                        'updated_at'=>Carbon::now(),
                     );
                     // dd($data2);
                     pegawai_penilaian::insert($data2);

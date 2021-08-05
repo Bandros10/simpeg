@@ -14,8 +14,8 @@
                 <div class="form-group">
                     <label for="name">Keterangan</label>
                     <textarea type="text" name="keterangan"
-                    class="form-control {{ $errors->has('keterangan') ? 'is-invalid':'' }}" id="keterangan"
-                    required></textarea>
+                        class="form-control {{ $errors->has('keterangan') ? 'is-invalid':'' }}" id="keterangan"
+                        required></textarea>
                 </div>
                 <button class="btn btn-primary">Simpan</button>
                 @slot('footer')
@@ -27,11 +27,11 @@
     <div class="col-md-8">
         <x-card>
             @slot('title')
-            List Role
+            Daftar Instrumen Penilaian
             @endslot
 
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table id="example2" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <td>No</td>
@@ -41,7 +41,7 @@
                     </thead>
                     <tbody>
                         @php $no = 1; @endphp
-                        @forelse ($data as $evaluasi)
+                        @foreach ($data as $evaluasi)
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $evaluasi->keterangan }}</td>
@@ -53,17 +53,9 @@
                                 </form>
                             </td>
                         </tr>
-                        @empty
-                        <tr>
-                            <td colspan="5" class="text-center">Tidak ada data</td>
-                        </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
-            </div>
-            ​
-            <div class="float-right">
-                {!! $data->links() !!}
             </div>
             @slot('footer')
             ​
