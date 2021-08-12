@@ -45,7 +45,7 @@
                                                     </div>
                                                     <div class="timeline-footer">
                                                         @if ($n->status != true)
-                                                            <a href="{{route('pegawai.detail',$n->id_pegawai)}}" class="btn btn-warning btn-sm">Detail</a>
+                                                            <a href="{{route('pegawai.detail',$n->created_at)}}" class="btn btn-warning btn-sm">Detail</a>
                                                         @else
                                                             <a href="" class="btn btn-sm btn-success">sudah di setujui</a>
                                                             <a href="{{route('pegawai.cetak_hasil',$n->id_pegawai)}}" class="btn btn-sm btn-secondary">Cetak Hasil</a>

@@ -27,7 +27,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <form action="{{route('konfirmasi',$nilai->id_pegawai)}}" method="POST">
+                        <form action="{{route('konfirmasi',$nilai->created_at)}}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-sm btn-info">Konfirmasi</button>
                         </form>

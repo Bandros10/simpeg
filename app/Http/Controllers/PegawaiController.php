@@ -89,12 +89,13 @@ class PegawaiController extends Controller
     }
 
     public function detail($id){
-        $data_nilai = pegawai_penilaian::all()->where('id_pegawai','=',$id);
+        $data_nilai = pegawai_penilaian::all()->where('created_at','=',$id);
         return \view('karyawan.pegawai_nilai',compact('data_nilai'));
     }
 
     public function konfirmasi($id){
-        penilaian::where([['id','=',$id]])->update(['status' => true]);
+        // dd($request->all());
+        penilaian::where([['created_at','=',$id]])->update(['status' => true]);
         return redirect('pegawai/nilai')->with('sukses','anda telah menyetujuji penilaian');
     }
 
