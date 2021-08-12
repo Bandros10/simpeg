@@ -19,9 +19,10 @@ class KaryawanController extends Controller
 
     public function store(Request $request){
         $insert =  request()->except(['_token']);
-        $data = DB::table('cutis')->select('cutis.created_at')->first();
+        $now = Carbon::now();
+        // $data = DB::table('cutis')->select('cutis.created_at')->first();
         $count_cuti = cuti::all()->where('id_pegawai','=',$request->id_pegawai)->count();
-        $tahun_cuti = Carbon::parse($data->created_at)->format('Y');
+        $tahun_cuti = $now->year;
         try {
             if ($count_cuti >= 7 &&  Carbon::now()->format('Y') == $tahun_cuti) {
                 return redirect()->back()->with('warning','uppsss...!!! Jatah cuti anda telah melebihi kuota');

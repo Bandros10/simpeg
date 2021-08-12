@@ -101,7 +101,6 @@ class PegawaiController extends Controller
     public function cetak($id){
         $data_peg = DB::table('penilaians')->where('id_pegawai',$id)->first();
         $data_nil = DB::table('pegawai_penilaians')->where([['id_pegawai',$id],['created_at',$data_peg->created_at]])->select('pegawai_penilaians.*')->get();
-        // dd($data_peg->penilai);
         $templateProcessor = new TemplateProcessor('template/lembar_penilaian.docx');
         $templateProcessor->setValue('nama_karyawan', strtoupper($data_peg->nama));
         $templateProcessor->setValue('devisi', strtoupper($data_peg->devisi));
