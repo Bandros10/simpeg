@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class EvaluasiController extends Controller
 {
     public function index(){
-        $data = evaluasi::orderBy('created_at', 'DESC')->paginate(10);
+        $data = evaluasi::all();
         return view('evaluasi.index',compact('data'));
     }
 
