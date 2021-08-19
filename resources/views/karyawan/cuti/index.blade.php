@@ -110,6 +110,8 @@
                                 <td>{{$cuti->keterangan}}</td>
                                 @if ($cuti->status == false)
                                     <td><p style="color: red">pengajuan cuti anda belum di aprov</p></td>
+                                @elseif($cuti->status == 3)
+                                    <td><p style="color: red">pengajuan cuti anda di tolak</p></td>
                                 @else
                                     <td><p style="color: green">cuti sudah di aprov</p></td>
                                 @endif
