@@ -28,6 +28,7 @@ class CreatePegawaisTable extends Migration
             $table->text('alamat');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
+            $table->date('tanggal_masuk');
             $table->string('tanggungan')->nullable();
             $table->string('pend_terakhir');
             $table->string('pend_ditempuh')->nullable();

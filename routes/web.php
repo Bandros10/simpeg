@@ -76,7 +76,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 Route::post('upload/{id}','UploadController@update')->name('upload.photo');
+Route::get('update/status_penilaian','HomeController@update_status_penilaian')->name('update.status_penilaian');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 

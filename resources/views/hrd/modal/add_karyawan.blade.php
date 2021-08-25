@@ -119,18 +119,25 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-4">
                                 <div class="form-group">
                                     <label for="tempat_lahir">Tempat Lahir</label>
                                     <input type="text" class="form-control" name="tempat_lahir"
                                         placeholder="Tempat Lahir" required>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-4">
                                 <div class="form-group">
                                     <label for="tanggal-lahir">Tanggal Lahir</label>
                                     <input type="date" class="form-control" name="tanggal_lahir"
                                         placeholder="Tanggal Lahir" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="tanggal-lahir">Tanggal masuk</label>
+                                    <input type="date" class="form-control" name="tanggal_masuk"
+                                        placeholder="Tanggal masuk" required>
                                 </div>
                             </div>
                         </div>

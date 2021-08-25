@@ -104,5 +104,24 @@
             if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
             return i;
         }
+
+        function update_status_penilaiain() {
+            $.ajax({
+                url: '{{route('update.status_penilaian')}}',
+                type: 'get',
+                dataType: "json",
+                beforeSend: function() {
+
+                },
+                success: function(data) {
+                    console.log('data berhasil di rubah');
+                }
+            });
+        }
+
+        setInterval(function() {
+            update_status_penilaiain();
+            console.log('status updated !!!');
+        }, 30000);
     </script>
 @endpush

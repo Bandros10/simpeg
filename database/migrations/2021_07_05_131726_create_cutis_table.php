@@ -21,7 +21,8 @@ class CreateCutisTable extends Migration
             $table->string('jabatan_pengaju');
             $table->string('telepon');
             $table->string('jumlah_cuti');
-            $table->string('tgl_cuti');
+            $table->string('tgl_awal');
+            $table->string('tgl_akhir');
             $table->text('keterangan');
             $table->tinyInteger('status')->default(0);
             $table->boolean('status_kepala')->default(false);

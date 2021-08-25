@@ -55,7 +55,7 @@
                                     <i class="far fa-calendar-alt"></i>
                                 </span>
                             </div>
-                            <input type="text" name="tgl_cuti" class="form-control float-right">
+                            <input type="text" id="date_range" name="tgl_cuti" class="form-control float-right">
                         </div>
                         <!-- /.input group -->
                     </div>
@@ -105,9 +105,9 @@
                                 <td>{{$cuti->nama_pengaju}}</td>
                                 <td>{{$cuti->jabatan_pengaju}}</td>
                                 <td>{{$cuti->telepon}}</td>
-                                <td>{{\carbon\carbon::parse(substr($cuti->tgl_cuti,0,10))->format('d F Y')}}</td>
-                                <td>{{\carbon\carbon::parse(substr($cuti->tgl_cuti,12,20))->format('d F Y')}}</td>
-                                <td>{{$cuti->keterangan}}</td>
+                                <td>{{Carbon\Carbon::parse($cuti->tgl_awal)->translatedFormat('d F Y')}}</td>
+                                <td>{{Carbon\Carbon::parse($cuti->tgl_akhir)->translatedFormat('d F Y')}}</td>
+                                <td>{{$cuti->keterangan}} <span></span> </td>
                                 @if ($cuti->status == false)
                                     <td><p style="color: red">pengajuan cuti anda belum di aprov</p></td>
                                 @elseif($cuti->status == 3)
@@ -127,6 +127,50 @@
 @endsection
 @push('js')
     <script>
-        $('input[name="tgl_cuti"]').daterangepicker();
+         $('input[name="tgl_cuti"]').daterangepicker({
+            opens: 'left'
+        }, function(start, end, label) {
+            var star = start.format('YYYY-MM-DD');
+            var end = end.format('YYYY-MM-DD');
+            var diff = start.diff(end, 'days');
+            if (diff <= -12) {
+                alert('anda tidak bisa mengajukan lebih dari 12 hari sekaligus')
+                location.reload();
+            }
+            console.log(diff);
+        });
+        // $('input[name="tgl_cuti"]').daterangepicker({
+        //     autoUpdateInput: false,
+        //     locale: {
+        //         cancelLabel: 'Clear'
+        //     }
+        // });
+        // $('input[name="tgl_cuti"]').on('apply.daterangepicker', function(ev, picker) {
+        //     $(this).val(picker.startDate.format('MM/DD/YYYY') + '-' + picker.endDate.format('MM/DD/YYYY'));
+        // });
+
+        // $('input[name="tgl_cuti"]').on('cancel.daterangepicker', function(ev, picker) {
+        //     $(this).val('');
+        // });
+
+        // $( "#date_range" ).keydown(function() {
+        //     alert( "Handler for .keyup() called." );
+        // });
+
+        // var date = $('#date_range').find('input[type="text"]');
+        //     inputs.keyup(function() {
+        //     console.log($(this));
+        // });
+
+        // $('#date_range').on('change', function() {
+        //     console.log(this.value);
+        //     alert( this.value );
+        // });
+
+        // function myFunction() {
+        //     var date = document.getElementById("date_range").value;
+        //     var explode = date.split("-");
+        //     console.log(explode);
+        // }
     </script>
 @endpush

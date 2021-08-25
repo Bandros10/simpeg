@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPhotoToPegawaisTable extends Migration
+class AddStatusPenilaianToPegawaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddPhotoToPegawaisTable extends Migration
     public function up()
     {
         Schema::table('pegawais', function (Blueprint $table) {
-            $table->binary('photo')->nullable();
+            $table->boolean('status_penilaian')->default(false);
         });
     }
 
@@ -26,7 +26,7 @@ class AddPhotoToPegawaisTable extends Migration
     public function down()
     {
         Schema::table('pegawais', function (Blueprint $table) {
-            $table->dropColumn('photo');
+            $table->dropColumn('status_penilaian');
         });
     }
 }

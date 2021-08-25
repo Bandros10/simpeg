@@ -4,6 +4,20 @@
 @endsection
 @section('content')
 <div class="row">
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="fas fa-restroom"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Pegawai Yang Harus Di Nilai</span>
+            <span class="info-box-number">{{$data_penilaian}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+</div>
+<div class="row">
     <div class="col">
         <div class="card">
             <div class="card-header">
@@ -38,7 +52,11 @@
                         @foreach ($all_marketing as $marketing_data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$marketing_data->nama_depan}} {{$marketing_data->nama_belakang}}</td>
+                                <td>@if ($marketing_data->status_penilaian == false)
+                                    <span style="color: red">{{$marketing_data->nama_depan}} {{$marketing_data->nama_belakang}}</span>
+                                @else
+                                    {{$marketing_data->nama_depan}} {{$marketing_data->nama_belakang}}
+                                @endif</td>
                                 <td>{{$marketing_data->devisi}}</td>
                                 <td>{{$marketing_data->jabatan}}</td>
                                 <td>{{$marketing_data->status}}</td>

@@ -24,8 +24,9 @@ class KepalaController extends Controller
     }
 
     public function allmarketing(){
+        $data_penilaian = DB::table('pegawais')->where('status_penilaian','=',false)->count();
         $all_marketing = DB::table('pegawais')->where('devisi','marketing')->get();
-        return view('kepala_devisi.marketing.all',compact('all_marketing'));
+        return view('kepala_devisi.marketing.all',compact('all_marketing','data_penilaian'));
     }
 
     public function penilaian($id){
@@ -63,40 +64,48 @@ class KepalaController extends Controller
     }
 
     public function penilaian_store(Request $request){
-        $tanggal = $request->tanggal;
-        $id = $request->id_pegawai;
-        if (penilaian::where([['tanggal', '=', $tanggal],['id_pegawai','=',$id]])->exists()) {
-            return redirect()->back()->with('error','evaluasi pada tanggal ini sudah di lakukan');
-        } else {
-            $penilaian = new penilaian;
-            $penilaian->id_pegawai = $id;
-            $penilaian->nama = $request->nama;
-            $penilaian->devisi = $request->devisi;
-            $penilaian->jabatan = $request->jabatan;
-            $penilaian->tanggal = $request->tanggal;
-            $penilaian->penilai = $request->penilai;
-            $penilaian->bobot_nilai = $request->bobot_nilai;
-            $penilaian->keterangan = $request->keterangan;
-            $penilaian->status = $request->status;
-            $penilaian->created_at = Carbon::now();
-            $penilaian->updated_at = Carbon::now();
-            $penilaian->save();
+        // dd($request->all());
+        try {
+            $nama = \explode(" ",$request->nama);
+            $tanggal = $request->tanggal;
+            $id = $request->id_pegawai;
+            if (penilaian::where([['tanggal', '=', $tanggal],['id_pegawai','=',$id]])->exists()) {
+                return redirect()->back()->with('error','evaluasi pada tanggal ini sudah di lakukan');
+            } else {
+                $penilaian = new penilaian;
+                $penilaian->id_pegawai = $id;
+                $penilaian->nama = $request->nama;
+                $penilaian->devisi = $request->devisi;
+                $penilaian->jabatan = $request->jabatan;
+                $penilaian->tanggal = $request->tanggal;
+                $penilaian->penilai = $request->penilai;
+                $penilaian->bobot_nilai = $request->bobot_nilai;
+                $penilaian->keterangan = $request->keterangan;
+                $penilaian->status = $request->status;
+                $penilaian->created_at = Carbon::now();
+                $penilaian->updated_at = Carbon::now();
+                $penilaian->save();
 
-            if(count($request->instrumen)>0){
-                foreach($request->instrumen as $item=>$v){
-                    $data2=array(
-                        'id_pegawai'=> $id,
-                        'instrumen'=>$request->instrumen[$item],
-                        'nilai'=>$request->nilai[$item],
-                        'created_at'=>Carbon::now(),
-                        'updated_at'=>Carbon::now(),
-                    );
-                    // dd($data2);
-                    pegawai_penilaian::insert($data2);
+                DB::table('pegawais')->where([['nama_depan',$nama[0]],['nama_belakang',$nama[1]]])->update(['status_penilaian'=>true]);
+
+                if(count($request->instrumen)>0){
+                    foreach($request->instrumen as $item=>$v){
+                        $data2=array(
+                            'id_pegawai'=> $id,
+                            'instrumen'=>$request->instrumen[$item],
+                            'nilai'=>$request->nilai[$item],
+                            'created_at'=>Carbon::now(),
+                            'updated_at'=>Carbon::now(),
+                        );
+                        // dd($data2);
+                        pegawai_penilaian::insert($data2);
+                    }
                 }
             }
+            return redirect()->route('home')->with('sukses','Data penilaian Pegawai telah di nilai');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error','Data penilaian harus terisi');
         }
-        return redirect()->route('home')->with('sukses','Data penilaian Pegawai telah di nilai');
     }
 
     public function data_all_penilaian(){
