@@ -28,7 +28,7 @@
                             <option value="kepala devisi marketing">kepala devisi marketing</option>
                             <option value="kepala devisi administrasi">kepala devisi administrasi</option>
                             <option value="karyawan">Karyawan</option>
-                            <option value="kepala divisi geodesi">kepala divisi geodesi</option>
+                            <option value="kepala devisi geodesi">kepala divisi geodesi</option>
                         </select>
                     </div>
                     @slot('footer')

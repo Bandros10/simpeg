@@ -20,12 +20,12 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <p><b>SELAMAT DATANG</b><br>Sistem Informasi Kepegawaian</p>
+            <p><b>SELAMAT DATANG DI</b> <br>Sistem Informasi Kepegawaian</p>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg"><b>PT.SUWANDA KARYA MANDIRI</b></p>
+                <p class="login-box-msg"><b>PT.SUWANDA KARYA MANDIRI</b><br>Login To Access Your Autorization</p>
 
                 <form action="{{ route('login') }}" method="POST">
                     {{ csrf_field() }}

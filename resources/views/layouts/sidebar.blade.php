@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<div class="sidebar">
+<div class="sidebar ">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -96,7 +96,7 @@
                 <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
-                        KEPALA DEVISI MARKETING
+                        KEPALA DIVISI MARKETING
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
@@ -104,7 +104,7 @@
                     <li class="nav-item">
                         <a href="{{route('market.all')}}" class="nav-link">
                             <i class="fas fa-restroom"></i>
-                            <p>Data Pegawai Devisi Administrai</p>
+                            <p>Data Pegawai Divisi Marketing</p>
                         </a>
                     </li>
                 </ul>
@@ -138,7 +138,7 @@
                     <li class="nav-item">
                         <a href="{{route('admin.all')}}" class="nav-link">
                             <i class="fas fa-restroom"></i>
-                            <p>Data Pegawai Devisi Administrai</p>
+                            <p>Data Pegawai Devisi Administrasi</p>
                         </a>
                     </li>
                 </ul>
