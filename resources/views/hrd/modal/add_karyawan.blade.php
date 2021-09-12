@@ -29,11 +29,11 @@
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
-                                    <label for="nama">Devisi</label>
+                                    <label for="nama">Divisi</label>
                                     <select class="form-control" name="devisi" placeholder="masukan devisi" required>
-                                        <option selected disabled>- Devisi -</option>
+                                        <option selected disabled>- Divisi -</option>
                                         <option value="marketing">Marketing</option>
-                                        <option value="kepala divisi geodesi">Kepala divisi Geodesi</option>
+                                        <option value="administrasi">Administrasi</option>
                                     </select>
                                 </div>
                             </div>

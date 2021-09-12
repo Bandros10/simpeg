@@ -12,7 +12,7 @@
             <form action="{{route('evaluasi.store')}}" method="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="name">Keterangan</label>
+                    <label for="name">Instrument Penilaian</label>
                     <textarea type="text" name="keterangan"
                         class="form-control {{ $errors->has('keterangan') ? 'is-invalid':'' }}" id="keterangan"
                         required></textarea>
