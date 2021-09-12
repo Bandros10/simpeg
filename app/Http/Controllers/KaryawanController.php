@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use Carbon\Carbon;
 use App\Models\cuti;
 use App\Models\pegawai;
@@ -19,7 +20,15 @@ class KaryawanController extends Controller
     }
 
     public function store(Request $request){
+
         $d = explode("-",$request->tgl_cuti);
+
+        $to = new DateTime($d[0]);
+        $from = new DateTime($d[1]);
+        $interval = $to->diff($from);
+        $days = $interval->format('%a');
+
+
         $awal = Carbon::parse($d[0])->format('d-m-Y');
         $akhir = Carbon::parse($d[1])->format('d-m-Y');
         $now = Carbon::now();
