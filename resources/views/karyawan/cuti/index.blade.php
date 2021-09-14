@@ -57,6 +57,11 @@
                             </div>
                             <input type="text" id="date_range" name="tgl_cuti" class="form-control float-right">
                         </div>
+                        @if ($data_pegawai->hari_cuti == 12)
+                            <span style="color: red">hari cuti anda adalah {{$data_pegawai->hari_cuti}}</span>
+                        @else
+                            <span style="color: red">sisa hari cuti anda tingal {{$data_pegawai->hari_cuti}}</span>
+                        @endif
                         <!-- /.input group -->
                     </div>
                     <div class="form-group">

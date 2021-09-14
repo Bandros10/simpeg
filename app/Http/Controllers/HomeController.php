@@ -45,4 +45,14 @@ class HomeController extends Controller
             return "data masih bulan ini";
         }
     }
+
+    public function update_hari_cuti(Request $request){
+        $get_data_hari = DB::table('pegawais')->select('pegawais.updated_at')->first();
+        $year_now = Carbon::parse($get_data_hari->updated_at)->format('Y');
+        if ($year_now  != date('Y')) {
+            pegawai::query()->update(['hari_cuti' => 12]);
+        } else {
+            return "cuti masih tahun ini";
+        }
+    }
 }

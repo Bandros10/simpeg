@@ -26,7 +26,7 @@ class KaryawanController extends Controller
         $to = new DateTime($d[0]);
         $from = new DateTime($d[1]);
         $interval = $to->diff($from);
-        $days = $interval->format('%a');
+        $days = $interval->format('%a') + 1;
 
 
         $awal = Carbon::parse($d[0])->format('d-m-Y');
@@ -36,7 +36,7 @@ class KaryawanController extends Controller
         $tahun_masuk = Carbon::parse($data->tanggal_masuk)->format('Y');
         $count_cuti = cuti::all()->where('id_pegawai','=',$request->id_pegawai)->count();
         $tahun = $now->year;
-        // dd($tahun);
+        $data_hari_cuti = pegawai::where('id_pegawai',$request->id_pegawai)->select('hari_cuti')->first();
         try {
             // if ($count_cuti >= 7 &&  Carbon::now()->format('Y') == $tahun) {
             //     return redirect()->back()->with('warning','uppsss...!!! Jatah cuti anda telah melebihi kuota');
@@ -44,7 +44,8 @@ class KaryawanController extends Controller
             if ($tahun_masuk == $tahun) {
                 return redirect()->back()->with('warning','uppsss...!!! anda belum dapat melakukan cuti');
             }
-            cuti::create(['id_pegawai' => $request->id_pegawai,
+            if ($data_hari_cuti->hari_cuti != 0) {
+                cuti::create(['id_pegawai' => $request->id_pegawai,
                         'jumlah_cuti' => $request->jumlah_cuti,
                         'nama_pengaju' => $request->nama_pengaju,
                         'jabatan_pengaju' => $request->jabatan_pengaju,
@@ -53,8 +54,11 @@ class KaryawanController extends Controller
                         'tgl_awal' => $awal,
                         'tgl_akhir' => $akhir,
                         'keterangan' => $request->keterangan]);
-            // cuti::Create($insert);
-            return redirect()->back()->with(['sukses' => 'Data: ' . $request->nama_pengaju . ' mengajukan cuti']);
+                pegawai::where('id_pegawai',$request->id_pegawai)->update(['hari_cuti' => $data_hari_cuti->hari_cuti - $days]);
+                return redirect()->back()->with(['sukses' => 'Data: ' . $request->nama_pengaju . ' mengajukan cuti']);
+            } else {
+                return redirect()->back()->with('warning','Jumlah cuti anda tahun ini sudah habis');
+            }
         } catch (\Throwable $th) {
             return redirect()->back()->with('warning','uppsss...!!! terjadi kesalahan');
         }

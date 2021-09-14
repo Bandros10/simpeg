@@ -119,8 +119,23 @@
             });
         }
 
+        function update_hari_cuti() {
+            $.ajax({
+                url: '{{route('update.hari_cuti')}}',
+                type: 'get',
+                dataType: "json",
+                beforeSend: function() {
+
+                },
+                success: function(data) {
+                    console.log('data berhasil di rubah');
+                }
+            });
+        }
+
         setInterval(function() {
             update_status_penilaiain();
+            update_hari_cuti();
             console.log('status updated !!!');
         }, 30000);
     </script>

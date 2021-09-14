@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddHariCutiToCutisTable extends Migration
+class AddHariCutiToPegawaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddHariCutiToCutisTable extends Migration
      */
     public function up()
     {
-        Schema::table('cutis', function (Blueprint $table) {
+        Schema::table('pegawais', function (Blueprint $table) {
             $table->integer('hari_cuti')->default(12);
         });
     }
@@ -25,7 +25,7 @@ class AddHariCutiToCutisTable extends Migration
      */
     public function down()
     {
-        Schema::table('cutis', function (Blueprint $table) {
+        Schema::table('pegawais', function (Blueprint $table) {
             $table->dropColumn('hari_cuti');
         });
     }
