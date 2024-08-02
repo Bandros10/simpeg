@@ -125,7 +125,7 @@
                     </li>
                 </ul>
             </li>
-            {{-- @elserole('kepala devisi administrasi')
+            @elserole('kepala devisi administrasi')
             <li class="nav-item menu-open">
                 <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-users"></i>
@@ -150,7 +150,7 @@
                         </a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
             @endrole
             @role('karyawan')
             <li class="nav-item menu-open">
